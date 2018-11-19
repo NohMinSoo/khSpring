@@ -42,8 +42,21 @@
 
 	#my-data>table tr>td:first-child {
 		width:200px;
-		height : 100px;
+		height : 50px;
 		font-weight: bolder;
+	}
+	#my-data>table tr>td:nth-child(2) {
+		font-size: 19px;
+		padding: 10px;
+		height : 70px;
+		width : 800px;
+	}
+	#my-data>table tr:nth-child(2n)>td{
+		padding : 0;
+		height : 10px;
+	}
+	#my-data>table tr>td:nth-child(3){
+	height : 10px;
 	}
 	
 	#my-data>table tr>td>span {
@@ -132,8 +145,10 @@
 	
 </script>
 
-<body>
 
+<body>
+	
+	
 	<jsp:include page="/resources/common/sub_my_header.jsp"></jsp:include>
 	<div id="wrapper">
 		<div id="contents">
@@ -145,14 +160,20 @@
 			<p>회원님의 <u><b>명백한 동의 없이 공개 또는 제 3자에게 제공되지 않습니다.</b></u></p>
 			<br><br>
 			<div id="my-data">
-			<table>
-					<tr><td>아이디<br></td><td>${sessionScope.member.mId}<br><span>(사용자 ID는 변경하실 수  없습니다.)</span>
-					</td></tr>
-					<tr><td>이름<br> </td><td>${sessionScope.member.mName}<br><span>(실명 정보(이름, 생년월일, 성별, 개인 고유 식별 정보)가 변경된 경우 본인 확인을 통해 정보를 수정하실 수 있습니다.)</span></td></tr>
-					<tr><td>닉네임<br> </td><td><input type="text" value="${sessionScope.member.mNickName}" id="nick"/> <button onclick="modify(nick);">중복확인</button><br><span>(닉네임은 본인의 얼굴입니다. 부적절한 닉네임 사용시 이용불가될 수 있습니다.)</span></td></tr>
-					<tr><td>이메일<br> </td><td><input type="email" value="${sessionScope.member.mEmail}" id="email"/> <button onclick="modify(email);">수정</button><br><span>(kh 서비스 변경/개편/종료, 프로모션 등 kh의 대부분 안내에 사용할 이메일 주소입니다.)</span></td></tr>
-					<tr><td>휴대폰<br> </td><td><input maxlength="11" type="text" value="${sessionScope.member.mPhone}" id="phone" /> <button onclick="modify(phone);">수정</button><br><span>(아이디, 비밀번호 찾기 등 본인확인이 필요한 경우  kh로부터 알림을 받을 때 사용할 휴대전화입니다.)</span></td></tr>
-					<tr><td>주소<br> </td><td>${sessionScope.member.mAddress} <button>수정</button><br><span>(고객님의 주소입니다.)</span></td></tr>
+			<table >
+					<tr><td rowspan="2">아이디</td><td><br>${sessionScope.member.mId}<br><span>(사용자 ID는 변경하실 수  없습니다.)</span></td></tr>
+					<tr><td></td></tr>
+					<tr><td rowspan="2">이름</td><td><br>${sessionScope.member.mName}<br><span>(실명 정보(이름, 생년월일, 성별, 개인 고유 식별 정보)가 변경된 경우 본인 확인을 통해 정보를 수정하실 수 있습니다.)</span></td></tr>
+					<tr><td></td></tr>
+					<tr><td rowspan="2">닉네임<br></td><td><br><input type="text" value="${sessionScope.member.mNickName}" id="nick"/> <button onclick="modify(nick);">중복확인</button><br><span>(닉네임은 본인의 얼굴입니다. 부적절한 닉네임 사용시 이용 불가 될 수 있습니다.)</span></td></tr>
+					<tr><td></td></tr>
+					<tr><td rowspan="2">이메일<br></td><td><br><input type="email" value="${sessionScope.member.mEmail}" id="email"/> <button onclick="modify(email);">수정</button><br><span>(kh 서비스 변경/개편/종료, 프로모션 등 kh의 대부분 안내에 사용할 이메일 주소입니다.)</span></td></tr>
+					<tr><td></td></tr>
+					<tr><td rowspan="2">휴대폰<br></td><td><br><input maxlength="11" type="text" value="${sessionScope.member.mPhone}" id="phone" /> <button onclick="modify(phone);">수정</button><br><span>(아이디, 비밀번호 찾기 등 본인확인이 필요한 경우  kh로부터 알림을 받을 때 사용할 휴대전화입니다.)</span></td></tr>
+					<tr><td></td></tr>
+					<tr><td rowspan="2">주소<br></td><td><br><input type="text" size="70px" id="address" value="${sessionScope.member.mAddress}" class="d_form large" placeholder="주소"> <button onclick="addressSearch()">주소찾기</button> <button onclick="modify(address);">수정</button><br><span>(고객님의 주소입니다 - 지번 주소만 지원합니다.)</span></td></tr>
+											
+					<tr><td></td></tr>
 			</table>
 			</div>
 		</div>
@@ -162,6 +183,62 @@
 			<jsp:include page="/resources/common/sub_footer.jsp"></jsp:include>
 		</div>
 	</div>
+
+
+
+<!-- 다음 주소 API -->
+
+
+<span id="guide" style="color:#999"></span>
+
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    function addressSearch() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+                // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+                if(fullRoadAddr !== ''){
+                    fullRoadAddr += extraRoadAddr;
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                
+                document.getElementById('address').value = data.jibunAddress;
+
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    document.getElementById('guide').innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+
+                } else {
+                    document.getElementById('guide').innerHTML = '';
+                }
+            }
+        }).open();
+    }
+</script>
+
 
 </body>
 </html>

@@ -51,6 +51,7 @@ public class MemberServiceImpl implements MemberService {
 		case "nick" : result = mDao.updateMemberNick(sqlSession,mId, data); break;
 		case "email" : result = mDao.updateMemberEmail(sqlSession,mId,data);break;
 		case "phone" : result = mDao.updateMemberPhone(sqlSession,mId, data); break;
+		case "address" : result = mDao.updateMemberAddress(sqlSession,mId, data); break;
 		}
 
 

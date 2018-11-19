@@ -6,10 +6,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인 성공</title>
 </head>
+
 <body>
-	<script>	
-		alert("로그인 성공");
-		location.href="/index.jsp";
-	</script>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<c:choose>
+				<c:when test="${sessionScope.member !=null}">
+						<script>	
+							alert("로그인 성공");
+							location.href="/index.jsp";
+						</script>
+				</c:when>
+				<c:otherwise>
+					
+						<script>	
+							alert("정지되거나 혹은 탈퇴된 계정 입니다.");
+							location.href="/index.jsp";
+						</script>
+				
+				</c:otherwise>
+			</c:choose>
+	
 </body>
 </html>

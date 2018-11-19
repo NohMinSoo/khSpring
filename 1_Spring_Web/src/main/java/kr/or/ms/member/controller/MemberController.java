@@ -68,7 +68,8 @@ public class MemberController {
 		if(oneMember != null)
 		{
 			HttpSession session = request.getSession(true);
-			session.setAttribute("member", oneMember);
+			if(oneMember.getmActive().equals("Y"))
+			{session.setAttribute("member", oneMember);}
 			return "member/loginSuccess";
 		}else
 		{
@@ -206,6 +207,7 @@ public class MemberController {
 				case "nick" : member.setmNickName(data); break;
 				case "email" : member.setmEmail(data); break;
 				case "phone" : member.setmPhone(data); break;
+				case "address" : member.setmAddress(data); break;
 				}
 				session.setAttribute("member", member);
 				

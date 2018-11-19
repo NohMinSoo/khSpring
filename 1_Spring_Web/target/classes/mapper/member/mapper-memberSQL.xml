@@ -13,7 +13,7 @@
   				M_ACTIVE AS mActive,
   				M_ENROLL AS mEnroll
   		from MEMBER
-  		WHERE M_ID = #{userId} AND M_PW = #{userPw} AND M_ACTIVE='Y'
+  		WHERE M_ID = #{userId} AND M_PW = #{userPw}
   		
   	</select>
   	
@@ -48,6 +48,12 @@
   	<select id="phoneModify" >
   		update MEMBER
   		set M_PHONE = #{data}
+  		WHERE M_ID = #{mId}
+  	</select>
+  	
+  	<select id="addressModify" >
+  		update MEMBER
+  		set M_ADDRESS = #{data}
   		WHERE M_ID = #{mId}
   	</select>
   	

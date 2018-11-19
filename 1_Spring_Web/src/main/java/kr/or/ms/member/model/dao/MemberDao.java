@@ -110,6 +110,26 @@ public class MemberDao {
 		
 		return sqlSession.update("member.phoneModify", map);
 	}
+	
+	/**
+	 * @Method Name : updateMemberPhone
+	 * @작성일 : 2018-11-19
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : DB에서 회원의 폰번호을 변경하는 메소드
+	 * @Parameter :  SqlSessionTemplate sqlSession, String mId, String data
+	 * @return : int
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	public int updateMemberAddress(SqlSessionTemplate sqlSession, String mId, String data) {
+		
+		HashMap<String,String> map = new HashMap<String,String>();
+		
+		map.put("mId", mId);
+		map.put("data", data);
+		
+		return sqlSession.update("member.addressModify", map);
+	}
 
 	
 }

@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+	#header-navi{
+		height:60px;
+		width:100%;
+		background-color: black;
+	}
+	
+	#header-navi a{
+		line-height: 60px;
+		text-decoration : none;
+		float : left;
+	}
+	
+</style>
+<body>
+	<div id="header-navi">
+		<a href="/index.jsp"><img style="padding-left:500px; width:60px"src="/resources/png/03_KH정보교육원_원형흑백.png"></img></a>
+		<a href="/member/myInfo.kh" style="padding-left:10px; font-size:20px; color:white;"><B>내정보</B></a><span style="color:white;"> - 소중한 개인 정보! 보안을 철저히!!</span>
+	</div>
+	
+</body>
+</html>
+
+
+

@@ -26,6 +26,37 @@ public class MemberServiceImpl implements MemberService {
 		return oneMember;
 	}
 
+	@Override
+	public int selectNickCheck(String nick) {
+		Member oneMember = mDao.selectNickCheck(sqlSession, nick);
+		if(oneMember!=null)  //해당 닉네임 사용자가 있다면
+		{
+			return 0;
+		}
+		else				// 해당 닉네임 사용자가 없다면
+		{
+			return 1;
+		}
+	}
+
+	
+	@Override
+	public int updateOneMember(String mId,String id, String data) {
+		
+		int result  = 0;
+		
+		// 넘어온 id값에 따라 호출되는 dao가 달라짐
+		switch(id)
+		{
+		case "nick" : result = mDao.updateMemberNick(sqlSession,mId, data); break;
+		case "email" : result = mDao.updateMemberEmail(sqlSession,mId,data);break;
+		case "phone" : result = mDao.updateMemberPhone(sqlSession,mId, data); break;
+		}
+
+
+		return result;
+	}
+
 }
 
 

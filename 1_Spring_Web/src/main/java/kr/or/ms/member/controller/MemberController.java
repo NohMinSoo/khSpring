@@ -2,6 +2,7 @@ package kr.or.ms.member.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -108,7 +109,7 @@ public class MemberController {
 	 * @변경이력 :  
 	 * @Method 설명 : 마이페이지 컨트롤러 메소드
 	 * @Parameter :  HttpServletRequest request
-	 * @return : String 
+	 * @return : ModelAndView 
 	 * @예외처리 :  Null Pointer Exception
 	 */
 	@RequestMapping(value="/member/myInfo.kh")
@@ -132,11 +133,95 @@ public class MemberController {
 			}
 			
 		} catch (Exception e) {
-			view.setViewName("member/myInfoPage");
+			view.setViewName("error/error");
 		}
 		return view;
 		
 	}
+	
+	/**
+	 * @Method Name : memberInfo
+	 * @작성일 : 2018-11-19
+	 * @작성자 : 노민수
+	 * @변경이력 :  
+	 * @Method 설명 : 닉네임 체크 메소드
+	 * @Parameter :  HttpServletRequest request
+	 * @return : void 
+	 * @예외처리 :  Null Pointer Exception
+	 */
+	@RequestMapping(value="/member/mModifyNickCheck.kh")
+	public void mModifyNickCheck(HttpServletRequest request, HttpServletResponse response)
+	{
+		String nick = request.getParameter("nick");
+		int result = mService.selectNickCheck(nick);
+		
+		try {
+			if(result>0) // 사용 가능하다면
+			{
+				response.getWriter().print("true");
+			}else //사용 불가능하다면
+			{
+				response.getWriter().print("false");
+			}
+		} catch (Exception e) {
+			System.out.println("ID 체크시(mModifyNickCheck) 문제 발생하였음");
+		}
+		
+			
+	}
+	
+	
+	/**
+	 * @Method Name : modifyCall
+	 * @작성일 : 2018-11-19
+	 * @작성자 : 노민수
+	 * @변경이력 :  
+	 * @Method 설명 : 회원 정보 변경 메소드
+	 * @Parameter :  HttpServletRequest request
+	 * @return : void 
+	 * @예외처리 :  Null Pointer Exception
+	 */
+	@RequestMapping(value="/member/mModify.kh")
+	public void modifyCall(HttpServletRequest request, HttpServletResponse response)
+	{
+		String id = request.getParameter("id");
+		String data = request.getParameter("data");
+		
+		HttpSession session = request.getSession(false);
+		
+		Member member = (Member)session.getAttribute("member");
+		
+		
+		// userId값은 말그대로 해당 유저 Id
+		// id 값은 변경하기 위한 id 구분자 (nick,email,phone)
+		// data 값은 변경되기 위한 값
+		int result = mService.updateOneMember(member.getmId(),id,data);
+		
+		try {
+			if(result>0) // 사용 가능하다면
+			{
+				//세션에 있는 정보를 갱신
+				switch(id)
+				{
+				case "nick" : member.setmNickName(data); break;
+				case "email" : member.setmEmail(data); break;
+				case "phone" : member.setmPhone(data); break;
+				}
+				session.setAttribute("member", member);
+				
+				response.getWriter().print("success");
+			}else //사용 불가능하다면
+			{
+				response.getWriter().print("fail");
+			}
+		} catch (Exception e) {
+			System.out.println("회원 정보 변경 메소드(modifyCall)에서 문제 발생");
+		}
+			
+	}
+	
+	
+	
 	
 }
 

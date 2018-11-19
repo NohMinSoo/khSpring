@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="member">
+  	<select id="oneMember" resultType="Member">
+  		select M_NO AS mNo,
+  				M_ID AS mId,
+  				M_PW AS mPw,
+  				M_NAME AS mName,
+  				M_NICKNAME AS mNickName,
+  				M_EMAIL AS mEmail,
+  				M_PHONE AS mPhone,
+  				M_ADDRESS AS mAddress,
+  				M_ACTIVE AS mActive,
+  				M_ENROLL AS mEnroll
+  		from MEMBER
+  		WHERE M_ID = #{userId} AND M_PW = #{userPw} AND M_ACTIVE='Y'
+  		
+  	</select>
+</mapper>

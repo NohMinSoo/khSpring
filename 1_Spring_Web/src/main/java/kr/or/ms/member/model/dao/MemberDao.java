@@ -11,6 +11,16 @@ import kr.or.ms.member.model.vo.Member;
 @Repository("memberDao")
 public class MemberDao {
 	
+	/**
+	 * @Method Name : selectOneMember
+	 * @작성일 : 2018-11-16
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 회원 1명의 대한 정보를 가져오는 메소드 (로그인, 회원정보 읽어오기 등등에 사용 됨)
+	 * @Parameter :  SqlSessionTemplate sqlSession,String userId, String userPw
+	 * @return : Member
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
 	public Member selectOneMember(SqlSessionTemplate sqlSession,String userId, String userPw) {
 		
 		HashMap<String,String> map = new HashMap<String,String>();
@@ -21,4 +31,85 @@ public class MemberDao {
 		return sqlSession.selectOne("member.oneMember",map);
 	
 	}
+
+	
+	/**
+	 * @Method Name : selectNickCheck
+	 * @작성일 : 2018-11-19
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 중복되는 넥네임을 체크하기 위한 메소드
+	 * @Parameter :  SqlSessionTemplate sqlSession, String nick
+	 * @return : Member
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	public Member selectNickCheck(SqlSessionTemplate sqlSession, String nick) {
+		
+		return sqlSession.selectOne("member.nickCheck",nick);
+	}
+
+	
+	/**
+	 * @Method Name : updateMemberNick
+	 * @작성일 : 2018-11-19
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : DB에서 회원의 닉네임을 변경하는 메소드
+	 * @Parameter :  SqlSessionTemplate sqlSession, String mId, String data
+	 * @return : int
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	public int updateMemberNick(SqlSessionTemplate sqlSession, String mId, String data) {
+		
+		HashMap<String,String> map = new HashMap<String,String>();
+		
+		map.put("mId", mId);
+		map.put("data", data);
+		
+		return sqlSession.update("member.nickModify", map);
+	}
+	
+	
+	/**
+	 * @Method Name : updateMemberEmail
+	 * @작성일 : 2018-11-19
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : DB에서 회원의 이메일을 변경하는 메소드
+	 * @Parameter :  SqlSessionTemplate sqlSession, String mId, String data
+	 * @return : int
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	public int updateMemberEmail(SqlSessionTemplate sqlSession, String mId, String data) {
+		
+		HashMap<String,String> map = new HashMap<String,String>();
+		
+		map.put("mId", mId);
+		map.put("data", data);
+		
+		return sqlSession.update("member.emailModify", map);
+	}
+
+	
+	/**
+	 * @Method Name : updateMemberPhone
+	 * @작성일 : 2018-11-19
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : DB에서 회원의 폰번호을 변경하는 메소드
+	 * @Parameter :  SqlSessionTemplate sqlSession, String mId, String data
+	 * @return : int
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	public int updateMemberPhone(SqlSessionTemplate sqlSession, String mId, String data) {
+		
+		HashMap<String,String> map = new HashMap<String,String>();
+		
+		map.put("mId", mId);
+		map.put("data", data);
+		
+		return sqlSession.update("member.phoneModify", map);
+	}
+
+	
 }

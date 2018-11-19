@@ -18,5 +18,31 @@ public interface MemberService {
 	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
 	 */
 	public Member selectOneMember(String userId, String userPw);
+
+	/**
+	 * @Method Name : selectNickCheck
+	 * @작성일 : 2018-11-19
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 사용중인 닉네임이 있는지를 파악하는 메소드
+	 * @Parameter :  String nick
+	 * @return : int
+	 * @예외처리 :  null Pointer
+	 */
+	public int selectNickCheck(String nick);
+
+	
+	
+	/**
+	 * @Method Name : updateOneMember
+	 * @작성일 : 2018-11-19
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 넘어오는 값에 따라 회원 정보를 변경하는 메소드
+	 * @Parameter : String id, String data
+	 * @return : int
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	public int updateOneMember(String mId,String id, String data);
 	
 }

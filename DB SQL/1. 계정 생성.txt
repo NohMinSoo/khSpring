@@ -1,0 +1,6 @@
+
+
+-- sys 계정에서 실행
+
+create user spring identified by spring;
+grant connect, resource to spring;

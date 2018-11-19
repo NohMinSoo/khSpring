@@ -1,0 +1,5 @@
+package kr.or.ms.counseling.controller;
+
+public class CounselingController {
+
+}

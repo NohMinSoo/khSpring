@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+div{border:1px solid black; box-sizing: border-box;}
+	#wrapper{
+			margin:0 auto;
+			width:1400px;
+	}
+	#header{
+		height:100px;
+		margin: 0 ;
+		padding: 0;
+	}
+	#navigator
+	{
+		height:50px;
+		margin: 0 auto;
+	}
+	#contents
+	{
+		height:700px;
+	}
+	#footer_bar
+	{
+		height:100px;
+	}
+	
+	#footer
+	{
+		height:300px;
+	}

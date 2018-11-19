@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+	#header_layer2
+	{
+		float:left;
+		width:50%;
+		height:100%;
+	}
+	#header_layer3
+	{
+		float:left;
+		width:25%;
+		height:100%;
+	}
+</style>
+<body>
+		<div id="header_layer1">
+		</div>
+		<div id="header_layer2">
+		</div>
+		<div id="header_layer3">
+		</div>
+</body>
+</html>

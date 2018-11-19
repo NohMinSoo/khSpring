@@ -1,0 +1,18 @@
+package kr.or.ms.member.model.dao;
+
+import org.springframework.stereotype.Repository;
+
+import kr.or.ms.member.model.vo.Member;
+
+@Repository("memberDao")
+public class MemberDao {
+	
+	
+	public Member selectOneMember(String userId, String userPw) {
+		
+		
+		System.out.println("MemberDao 호출됨");
+		
+		return null;
+	}
+}

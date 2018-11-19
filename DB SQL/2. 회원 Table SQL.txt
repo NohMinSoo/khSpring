@@ -1,0 +1,23 @@
+CREATE TABLE MEMBER(
+	M_NO NUMBER UNIQUE,					-- 회원 번호
+	M_ID VARCHAR2(15) PRIMARY KEY,				-- 회원 아이디
+	M_PW VARCHAR2(20) NOT NULL,				-- 회원 비밀번호
+	M_NAME VARCHAR2(20) NOT NULL,				-- 회원 이름
+	M_NICKNAME VARCHAR2(20) UNIQUE,				-- 회원 닉네임
+	M_EMAIL VARCHAR(40) NOT NULL,				-- 회원 이메일
+	M_PHONE CHAR(11) NOT NULL,				-- 회원 폰번호
+	M_ADDRESS VARCHAR(200) NOT NULL,			-- 회원 주소
+	M_ACTIVE CHAR(1) CHECK (M_ACTIVE IN ('Y','S','N')),	-- 활성화값 (Y:활성,S:정지,N:탈퇴)
+	M_ENROLL DATE DEFAULT SYSDATE				-- 회원 가입일
+);
+
+CREATE SEQUENCE seq_member_no;
+
+
+insert into member values(seq_member_no.nextval,'test1','1234','테스트','연습용','test1@ms.or.kr','01011112222','경기도 부천시 원미구 중4동 한라마을 아파트 101동 202호','Y',default);
+insert into member values(seq_member_no.nextval,'test2','1234','테스트2','연습용2','test2@ms.or.kr','01011112222','경기도 부천시 원미구 중3동 중흥마을 아파트 A동 101호','S',default);
+insert into member values(seq_member_no.nextval,'test3','1234','테스트3','연습용3','test3@ms.or.kr','01011112222','서울시 구로구 가리봉동 498-1 하이덴 빌라 2층 3호','N',default);
+
+commit;
+
+select * FROM member;

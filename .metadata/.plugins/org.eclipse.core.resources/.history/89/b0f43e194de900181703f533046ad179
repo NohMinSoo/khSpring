@@ -1,0 +1,15 @@
+package kr.or.ms.member.model.service;
+
+import kr.or.ms.member.model.vo.Member;
+
+public class MemberServiceImpl implements MemberService {
+
+	@Override
+	public Member selectOneMember(String userId, String userPw) {
+		
+		
+		
+		return null;
+	}
+
+}

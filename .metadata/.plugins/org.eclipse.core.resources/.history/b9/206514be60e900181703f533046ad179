@@ -1,0 +1,113 @@
+package kr.or.ms.member.controller;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.annotation.SessionScope;
+
+import kr.or.ms.member.model.service.MemberService;
+import kr.or.ms.member.model.vo.Member;
+
+
+
+
+/**
+ * @FileName : MemberController.java (선택된 편집 파일 이름을 작성한다.)
+ * @Date :  2018-11-15 (현재의 날짜를 작성한다.)
+ * @작성자 : 노민수 (작성자의 이름을 기록한다.)
+ * @변경이력 : 2018-11-15 (프로그램이 변경되는 경우 해당 이력을 간략하게 작성한다.)
+ * @프로그램 설명 : (프로그램의 기능을 간략하게 기술한다.)
+ */
+@Controller("memberController")
+public class MemberController {
+	
+	@Resource(name="memberService")
+	MemberService mService;
+	
+	/**
+	 * @Method Name : (선택된 메소드의 이름을 작성한다.)
+	 * @작성일 : (메소드를 작성한 일자를 기록한다.)
+	 * @작성자 : (작성자의 이름을 작성한다.)
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : (메소드가 수행하는 간단한 기능을 간략하게 기술한다.)
+	 * @Parameter :  (메소드의 입력 파라미터를 기술한다.)
+	 * @return : (메소드의 리턴타입을 작성한다.)
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	@RequestMapping(value="/member/loginPage.kh")
+	public String loginPageCall() {
+		
+		return "member/loginPage";
+	}
+	
+	/**
+	 * @Method Name : login
+	 * @작성일 : 2018-11-16
+	 * @작성자 : 노민수
+	 * @변경이력 :  
+	 * @Method 설명 : 로그인 컨트롤러 메소드
+	 * @Parameter :  HttpServletRequest request,
+						@RequestParam String userId, @RequestParam String userPw
+	 * @return : String 
+	 * @예외처리 :  Null Pointer Exception
+	 */
+	@RequestMapping(value="/member/login.kh")
+	public String login(HttpServletRequest request,
+						@RequestParam String userId, @RequestParam String userPw)
+	{
+		System.out.println(userId+"("+request.getRemoteAddr()+") : 로그인 호출" );
+		
+		Member oneMember = mService.selectOneMember(userId, userPw);
+		
+		
+		if(oneMember != null)
+		{
+			HttpSession session = request.getSession(true);
+			session.setAttribute("member", oneMember);
+			return "member/loginSuccess";
+		}else
+		{
+			return "member/loginFailed";
+		}
+		
+	}
+	
+	
+	/**
+	 * @Method Name : login
+	 * @작성일 : 2018-11-16
+	 * @작성자 : 노민수
+	 * @변경이력 :  
+	 * @Method 설명 : 로그인 컨트롤러 메소드
+	 * @Parameter :  HttpServletRequest request,
+						@RequestParam String userId, @RequestParam String userPw
+	 * @return : String 
+	 * @예외처리 :  Null Pointer Exception
+	 */
+	@RequestMapping(value="/member/logout.kh")
+	public String logout(HttpServletRequest request)
+	{
+		HttpSession session = request.getSession(false);
+		
+		
+		
+		return null;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+

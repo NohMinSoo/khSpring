@@ -1,0 +1,5 @@
+package kr.or.ms.member.model.dao;
+
+public class MemberDao {
+
+}

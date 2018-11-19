@@ -1,0 +1,52 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<style>
+	#navi {
+		margin : 0;
+		padding : 0;
+		height : 100%;
+		
+	}
+	#navi li{
+		box-sizing : border-box;
+
+		float : left;   /* 각 요소들을 왼쪽부터 배치 */
+		list-style-type: none;  /* li 속성에 있는 점 없애기*/
+		text-align: center;  /* 글자 가운데로 정렬 */
+		width:10%;
+		height : 100%;
+	}
+	#navi li a{
+		 text-decoration: none; /* 밑 줄 삭제 */
+		 line-height : 50px;
+		 color : black;
+		 text-shadow: 1px 1px 0px #cccccc;  /* 글자 새도우 효과 (밝은 회색) */
+	}
+	#navi li a:hover { 
+		color:red; /* 글자색*/
+		font-size : 110%;
+		text-shadow:0px 1px 1px red; /* 텍스트그림자*/
+	}
+</style>
+		<ul id="navi">
+			<li><a href="#">교육과정</a></li>
+			<li><a href="#">교육원소개</a></li>
+			<li><a href="#">취업지원센터</a></li>
+			<li><a href="#">채용정보</a></li>
+			<li><a href="#">프로젝트</a></li>
+			<li><a href="#">커뮤니티</a></li>
+			<li><a href="#">신학연계</a></li>
+			<li><a href="#">마이페이지</a></li>
+			<li><a href="#">상담센터</a></li>
+			<li><a href="#">오시는길</a></li>
+		</ul>
+	
+</body>
+</html>

@@ -1,0 +1,5 @@
+package kr.or.ms.review.controller;
+
+public class ReviewController {
+
+}

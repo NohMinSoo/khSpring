@@ -1,0 +1,8 @@
+package kr.or.ms.counseling.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class CounselingController {
+
+}

@@ -1,0 +1,23 @@
+package kr.or.ms.member.model.dao;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import kr.or.ms.member.model.vo.Member;
+
+@Repository("memberDao")
+public class MemberDao {
+	
+	@Autowired
+	SqlSessionTemplate sqlSession;
+	
+	
+	public Member selectOneMember(String userId, String userPw) {
+		
+		
+		System.out.println("MemberDao 호출됨");
+		
+		return null;
+	}
+}

@@ -1,0 +1,5 @@
+package kr.or.ms.member.model.service;
+
+public interface MemberService {
+
+}

@@ -1,0 +1,12 @@
+package kr.or.ms.member.model.vo;
+
+/**
+ * @FileName : Member.java 
+ * @Date :  2018-11-16
+ * @작성자 : 노민수
+ * @변경이력 :  
+ * @프로그램 설명 : 회원 1명에 대한 정보를 담을 수 있는 VO 객체
+ */
+public class Member {
+
+}

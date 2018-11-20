@@ -223,7 +223,38 @@ public class MemberController {
 	}
 	
 	
+	/**
+	 * @Method Name : joinPageAgreeCall
+	 * @작성일 : 2018-11-20
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 회원 가입시 이용약관을 호출하는 메소드
+	 * @Parameter :  null
+	 * @return : String
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	@RequestMapping(value="/member/joinPageAgree.kh")
+	public String joinPageAgreeCall()
+	{
+		return "member/joinPageAgree";
+	}
 	
+	
+	/**
+	 * @Method Name : joinPageCall
+	 * @작성일 : 2018-11-20
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 회원가입 페이지(join Page)를 호출하는 메소드
+	 * @Parameter :  null
+	 * @return : String
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	@RequestMapping(value="/member/joinPage.kh")
+	public String joinPageCall()
+	{
+		return "member/joinPage";
+	}
 	
 }
 

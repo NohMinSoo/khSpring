@@ -1,0 +1,117 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="/resources/png/03_KH정보교육원_원형컬러.png">
+<title>회원가입</title>
+</head>
+<body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<style>
+	
+    
+    #login-form > div {
+        margin: 15px 0;
+    }
+    
+    #container{
+    	margin-left : 300px;
+    	width : 1000px;
+    	height : 900px;
+    	
+    }
+    #contents-2{
+    border : 1px solid red;
+    	padding-left: 200px;
+    	padding-right: 200px;
+    	text-align: left; width : 100%;
+    	height : 10%;
+    	
+    }
+    #contents-3{
+    	border : 1px solid red;
+    	padding-left: 200px;
+    	padding-right: 200px;
+    	text-align: left; width : 100%;
+    	height : 75%;
+    }
+    #contents-3 div{
+    	border : 1px solid gray;
+    }
+    #contents-3 p{
+    	font-weight: bolder;
+    }
+	#kh-agree{
+		width : 100%;
+		height : 25%;
+		overflow: auto;
+	}
+	#privacy{
+		width : 100%;
+		height : 25%;
+		overflow: auto;
+	}
+	
+	.btn span.glyphicon {    			
+	opacity: 0;				
+	}
+	.btn.active span.glyphicon {				
+	opacity: 1;				
+	}
+
+</style>
+
+
+
+<div id="container"  align="center">
+    <div id="contents-1">
+            	<a href="/index.jsp"><img height=120px src="/resources/jpg/kh_info.jpg"/></a><br>
+    </div>
+
+    <div id="contents-2" >    
+            <span><b>KH정보교육원</b>을 찾아주셔서 감사합니다.</span><br>
+			<span>회사는 <b><u>회원가입, 상담, 서비스 신청 등을 위해 아래와 같은 개인정보를 수집</u></b>하고 있습니다.</span><br>
+			<span>회원가입을 원하실 경우 내용 확인 후 <b><u>동의</u></b>해 주시기 바랍니다.</span><br>
+			<hr style="border:2px solid black;">
+	</div>
+	<div id="contents-3" >    
+	<div class="btn-group" data-toggle="buttons" style="float:left;">
+			<label class="btn btn-primary">
+				<input type="checkbox" autocomplete="off">
+				<span class="glyphicon glyphicon-ok"></span>
+			</label>			
+	</div> 
+           	<p style="float:left;">전체 이용 약관 동의 </p>
+           	<br><br>
+           	<p>kh정보교육원 이용약관</p>
+           	<div id="kh-agree">
+           			<jsp:include page="/resources/common/kh_agree.jsp"></jsp:include>
+           	</div>
+           	<br><br>
+           	<p>개인정보 보호정책 및 개인정보 수집에 대한 이용 안내 </p>
+           	<div id="privacy">
+           			<jsp:include page="/resources/common/privacy.jsp"></jsp:include>
+           	</div>
+	</div>
+	
+</div>
+
+
+
+<div id="footer_bar">
+			<jsp:include page="/resources/common/main_footer_bar.jsp"></jsp:include>
+		</div>
+		<br>
+		<div id="footer">
+			<jsp:include page="/resources/common/main_footer.jsp"></jsp:include>
+		</div>
+</body>
+</html>

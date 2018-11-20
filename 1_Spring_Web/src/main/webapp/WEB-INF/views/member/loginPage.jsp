@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="shortcut icon" href="/resources/png/03_KH정보교육원_원형컬러.png">
+<title>로그인</title>
 </head>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -87,7 +88,7 @@
 
 <div class="container"  align="center">
     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-            	<a href="/index.jsp"><img height=120px src="/resources/jpg/kh_info.jpg"/></a>    
+            	<a href="/index.jsp"><img height=80px width=300px src="/resources/png/01_KH정보교육원_가로컬러.png"/></a>    
             <div class="panel-body">
                 <form action="/member/login.kh" method="post" id="login-form">
                     <div>
@@ -103,7 +104,7 @@
                 <br>
                	<p align="left" id="member-join">
                 <span align="left">KH 정보교육원의 회원이 아니신가요?</span> 
-                <a href="">KH회원가입 하기</a>
+                <a href="/member/joinPage.kh">KH회원가입 하기</a>
                 </p>
                 <p align="left" id="id-pw-find">
                 <span align="left">아이디나 비밀번호를 잊어버리셨나요?</span> 

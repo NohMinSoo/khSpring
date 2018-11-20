@@ -1,0 +1,9 @@
+
+apache-tomcat : 8.5.31
+
+apache-maven : 3.6.0
+
+jdk : 8.0
+
+spring : 5.0.6
+

@@ -156,7 +156,7 @@ $(document).ready(function(){
 
     <div id="contents-2" >
         
-            <span style="font-size:20px;"><b>KH정보교육원</b>을 찾아주셔서 감사합니다.</span><br>
+            <span><b>KH정보교육원</b>을 찾아주셔서 감사합니다.</span><br>
 			<span>회사는 <b><u>회원가입, 상담, 서비스 신청 등을 위해 아래와 같은 개인정보를 수집</u></b>하고 있습니다.</span><br>
 			<span>회원가입을 원하실 경우 내용 확인 후 <b><u>동의</u></b>해 주시기 바랍니다.</span><br>
 			<hr style="border:2px solid black;">

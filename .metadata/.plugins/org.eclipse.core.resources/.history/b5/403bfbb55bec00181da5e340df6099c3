@@ -1,0 +1,74 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<style>
+	#navi {
+		margin : 0;
+		padding : 0;
+		height : 100%;
+		
+	}
+	#navi li{
+		box-sizing : border-box;
+
+		float : left;   /* 각 요소들을 왼쪽부터 배치 */
+		list-style-type: none;  /* li 속성에 있는 점 없애기*/
+		text-align: center;  /* 글자 가운데로 정렬 */
+		width:10%;
+		height : 100%;
+	}
+	#navi li a{
+		 text-decoration: none; /* 밑 줄 삭제 */
+		 line-height : 50px;
+		 color : gray;
+		 text-shadow: 1px 1px 0px #cccccc;  /* 글자 새도우 효과 (밝은 회색) */
+	}
+	#navi li a:hover { 
+		color:white; /* 글자색*/
+		font-size : 130%;
+		text-shadow:0px 1px 1px white; /* 텍스트그림자*/
+	}
+</style>
+<div class="navbar navbar-inverse">
+		<ul id="navi">
+			<li><a href="/edu/curriculum.kh">교육과정</a></li>
+			<li><a href="/intro/intro.kh">교육원소개</a></li>
+			<li><a href="/employmentSupportCenter/system.kh">취업지원센터</a></li>
+			<li><a href="/employmentInformation/jobSearch.kh">채용정보</a></li>
+			<li><a href="/project/notice.kh">프로젝트</a></li>
+			<li><a href="/community/notice.kh">커뮤니티</a></li>
+			<li><a href="/review/review.kh">수강후기</a></li>
+			<li><a href="/intro/contact.kh">오시는길</a></li>
+			<li><a href="/counseling/center.kh">상담센터</a></li>
+			
+			<c:choose>
+				<c:when test="${sessionScope.member !=null}">
+						<li><a href="/member/myInfo.kh">마이페이지</a></li>
+				</c:when>
+				<c:otherwise><li><a href="/member/loginPage.kh">로그인</a></li></c:otherwise>
+			</c:choose>
+			
+			
+		</ul>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

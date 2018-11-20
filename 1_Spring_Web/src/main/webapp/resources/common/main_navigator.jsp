@@ -54,7 +54,8 @@
 				<c:when test="${sessionScope.member !=null}">
 						<li><a href="/member/myInfo.kh">마이페이지</a></li>
 				</c:when>
-				<c:otherwise><li><a href="/member/loginPage.kh">로그인</a></li></c:otherwise>
+				<c:otherwise><li><a href="/member/loginPage.kh">로그인</a><span style="color:white;"> | </span><a href="/member/joinPage.kh">회원가입</a>
+				</li></c:otherwise>
 			</c:choose>
 			
 			

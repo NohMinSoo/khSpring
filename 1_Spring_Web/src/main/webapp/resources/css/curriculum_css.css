@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+div{box-sizing: border-box;}
+	#wrapper{
+			margin:0 auto;
+			width:1400px;
+	}
+	#header{
+		height:100px;
+		margin: 0 ;
+		padding: 0;
+	}
+	#navigator
+	{
+		height:50px;
+		margin: 0 auto;
+	}
+	#contents
+	{
+		height:700px;
+	}
+	#content_1{
+		height:70%;
+		background-image: url("/resources/jpg/edu_background01.jpg");
+		background-size: 100%;
+	}
+	#content_2{
+		height:30%;
+		background-image: url("/resources/jpg/edu_background02.jpg");
+		background-size: 100%;
+	}
+	/*
+	#content_2 .left {position: absolute; top: 700px; left: 850px;}
+	#content_2 .left li {padding-right: 21px;}
+	#content_2 .left li a{font-size: 10px;}
+
+	#content_2 .right {position: absolute; top: 700px; right: 430px;}
+	#content_2 .right li {padding-left: 22px;}
+	#content_2 .right li a{font-size: 10px;}
+	*/
+	#content_2 ul {
+		float:left;
+		font-size:10px;
+		
+	}
+	.left{
+		padding-left:640px;
+		padding-top:60px;
+	}
+	.right{
+		padding-left : 10px;
+		padding-top:60px;
+	}
+	
+	#footer_bar	{
+		
+		width:1400px;
+		height:50px;
+	
+	}
+	
+	#footer
+	{
+		
+		height:300px;
+	}

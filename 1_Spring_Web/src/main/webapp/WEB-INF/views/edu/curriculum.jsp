@@ -26,9 +26,10 @@
 			</div>
 			<div id="content_2">
 				<div id="class_link">
-					<!-- <a href="javascript:fnEduPopupOpen('gukgi', 0);"></a> -->
+					<a id="gukgi_1" href="#"></a>
+					<a id="gukgi_2" href="#"></a>
+					<a id="gukgi_3" href="#"></a> 
 					<ul class="left">
-						<!--  <li><a href="javascript:fnEduPopupOpen('gukgi', 1);" class="title"></a></li>-->
 						<li><a href="#">· 정보보안 기반 해킹기법 분석 양성 과정</a></li>
 						<li><a href="#">· 정보보호 및 네트워크 보안 관리자 양성 과정</a></li>
 						<li><a href="#">· 정보보안 엔지니어 및 침투테스트 관리자 양성 과정</a></li>
@@ -38,7 +39,6 @@
 						<li><a href="#">· [NCS]기업이 요구하는 정보보안 엔지니어 양성과정</a></li>							
 					</ul>
 					<ul class="right">
-					<!--	<li><a href="javascript:fnEduPopupOpen('gukgi', 2);" class="title"></a></li> -->
 						<li><a href="#">· [NCS]웹개발 응용SW엔지니어 양성과정</a></li>
 						<li><a href="#">· [NCS]응용SW엔지니어 및 DB엔지니어 양성과정</a></li>
 						<li><a href="#">· [NCS]응용SW엔지니어 및 하이브리드APP 개발자 양성과정</a></li>

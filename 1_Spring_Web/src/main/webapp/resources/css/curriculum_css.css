@@ -40,16 +40,44 @@ div{box-sizing: border-box;}
 	*/
 	#content_2 ul {
 		float:left;
-		font-size:10px;
-		
+		font-size:10px;			
 	}
 	.left{
-		padding-left:640px;
-		padding-top:60px;
+		position:relative;
+		top : 70px;
+		left : 600px;
 	}
 	.right{
-		padding-left : 10px;
-		padding-top:60px;
+		position:relative;
+		top : 70px;
+		left : 570px;
+	}
+	#content_2 ul li a {
+		color:white;
+	}
+	#gukgi_1{		
+		display:inline-block;
+		position:relative;
+		left:-290px;
+		top:25px;		
+		height:140px;
+		width:190px;
+	}
+	#gukgi_2{
+		display:inline-block;
+		position:relative;
+		left:-205px;
+		top: -85px;		
+		height:30px;
+		width:160px;
+	}
+	#gukgi_3{		
+		display:inline-block;
+		position:relative;
+		left:-118px;
+		top: -84px;		
+		height:30px;
+		width:160px;		
 	}
 	
 	#footer_bar	{

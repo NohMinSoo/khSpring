@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-ignore_files=*/target/*\ntrue\n
+ignore_files=*/.metadata/*\ntrue\n*/target/*\ntrue\n

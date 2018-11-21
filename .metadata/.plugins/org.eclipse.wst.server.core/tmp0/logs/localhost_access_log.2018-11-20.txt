@@ -1101,3 +1101,12 @@
 0:0:0:0:0:0:0:1 - - [20/Nov/2018:17:53:56 +0900] "GET /resources/png/03_KH%EC%A0%95%EB%B3%B4%EA%B5%90%EC%9C%A1%EC%9B%90_%EC%9B%90%ED%98%95%EC%BB%AC%EB%9F%AC.png HTTP/1.1" 200 7376
 0:0:0:0:0:0:0:1 - - [20/Nov/2018:17:53:57 +0900] "GET /member/joinPageAgree.kh HTTP/1.1" 200 22214
 0:0:0:0:0:0:0:1 - - [20/Nov/2018:17:53:59 +0900] "GET /member/joinPage.kh HTTP/1.1" 200 9460
+127.0.0.1 - - [20/Nov/2018:19:05:50 +0900] "GET / HTTP/1.1" 200 14414
+0:0:0:0:0:0:0:1 - - [20/Nov/2018:19:05:55 +0900] "GET / HTTP/1.1" 200 14414
+0:0:0:0:0:0:0:1 - - [20/Nov/2018:19:05:57 +0900] "GET /edu/curriculum.kh HTTP/1.1" 200 13646
+0:0:0:0:0:0:0:1 - - [20/Nov/2018:19:05:58 +0900] "GET /resources/css/curriculum_css.css HTTP/1.1" 200 1107
+0:0:0:0:0:0:0:1 - - [20/Nov/2018:19:05:58 +0900] "GET /resources/jpg/edu_background01.jpg HTTP/1.1" 200 178647
+0:0:0:0:0:0:0:1 - - [20/Nov/2018:19:05:58 +0900] "GET /resources/jpg/edu_background02.jpg HTTP/1.1" 200 71449
+0:0:0:0:0:0:0:1 - - [20/Nov/2018:19:06:01 +0900] "GET /index.jsp HTTP/1.1" 200 14414
+0:0:0:0:0:0:0:1 - - [20/Nov/2018:19:06:02 +0900] "GET /edu/curriculum.kh HTTP/1.1" 200 13646
+0:0:0:0:0:0:0:1 - - [20/Nov/2018:19:06:04 +0900] "GET /edu/curriculum.kh HTTP/1.1" 200 13646

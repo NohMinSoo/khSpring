@@ -95,7 +95,7 @@
 	function nickCheck(id,nick)
 	{
 		$.ajax({
-			url : "/member/mModifyNickCheck.kh",
+			url : "/member/nickCheck.kh",
 			data : {nick:nick},
 			type : "post",					
 			success : function(result){

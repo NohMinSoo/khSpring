@@ -17,6 +17,22 @@
   		
   	</select>
   	
+  	<select id="idCheck" resultType="Member">
+  		select M_NO AS mNo,
+  				M_ID AS mId,
+  				M_PW AS mPw,
+  				M_NAME AS mName,
+  				M_NICKNAME AS mNickName,
+  				M_EMAIL AS mEmail,
+  				M_PHONE AS mPhone,
+  				M_ADDRESS AS mAddress,
+  				M_ACTIVE AS mActive,
+  				M_ENROLL AS mEnroll
+  		from MEMBER
+  		WHERE M_ID = #{id}
+  		
+  	</select>
+  	
   	<select id="nickCheck" resultType="Member">
   		select M_NO AS mNo,
   				M_ID AS mId,

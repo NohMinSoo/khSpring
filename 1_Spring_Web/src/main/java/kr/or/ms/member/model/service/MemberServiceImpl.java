@@ -25,6 +25,20 @@ public class MemberServiceImpl implements MemberService {
 		
 		return oneMember;
 	}
+	
+	@Override
+	public int selectIdCheck(String id) {
+		Member oneMember = mDao.selectIdCheck(sqlSession, id);
+		if(oneMember!=null)  //해당 닉네임 사용자가 있다면
+		{
+			return 0;
+		}
+		else				// 해당 닉네임 사용자가 없다면
+		{
+			return 1;
+		}
+	}
+
 
 	@Override
 	public int selectNickCheck(String nick) {
@@ -58,6 +72,7 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	
 }
 
 

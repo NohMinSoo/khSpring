@@ -141,7 +141,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * @Method Name : memberInfo
+	 * @Method Name : idCheck
 	 * @작성일 : 2018-11-19
 	 * @작성자 : 노민수
 	 * @변경이력 :  
@@ -150,8 +150,39 @@ public class MemberController {
 	 * @return : void 
 	 * @예외처리 :  Null Pointer Exception
 	 */
-	@RequestMapping(value="/member/mModifyNickCheck.kh")
-	public void mModifyNickCheck(HttpServletRequest request, HttpServletResponse response)
+	@RequestMapping(value="/member/idCheck.kh")
+	public void idCheck(HttpServletRequest request, HttpServletResponse response)
+	{
+		String id = request.getParameter("id");
+		int result = mService.selectIdCheck(id);
+		
+		try {
+			if(result>0) // 사용 가능하다면
+			{
+				response.getWriter().print("true");
+			}else //사용 불가능하다면
+			{
+				response.getWriter().print("false");
+			}
+		} catch (Exception e) {
+			System.out.println("ID 체크시(idCheckCheck) 문제 발생하였음");
+		}
+		
+			
+	}
+	
+	/**
+	 * @Method Name : nickCheck
+	 * @작성일 : 2018-11-19
+	 * @작성자 : 노민수
+	 * @변경이력 :  
+	 * @Method 설명 : 닉네임 체크 메소드
+	 * @Parameter :  HttpServletRequest request
+	 * @return : void 
+	 * @예외처리 :  Null Pointer Exception
+	 */
+	@RequestMapping(value="/member/nickCheck.kh")
+	public void nickCheck(HttpServletRequest request, HttpServletResponse response)
 	{
 		String nick = request.getParameter("nick");
 		int result = mService.selectNickCheck(nick);
@@ -165,11 +196,13 @@ public class MemberController {
 				response.getWriter().print("false");
 			}
 		} catch (Exception e) {
-			System.out.println("ID 체크시(mModifyNickCheck) 문제 발생하였음");
+			System.out.println("닉네임 체크시(NickCheck) 문제 발생하였음");
 		}
 		
 			
 	}
+	
+
 	
 	
 	/**

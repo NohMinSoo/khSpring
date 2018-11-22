@@ -210,9 +210,12 @@ $(document).ready(function(){
 		if(expr.test(data))
 		{
 			$(id).css('border','4px solid #003399');
-			$(id).next().next().text('사용한 비밀번호 입니다.');
+			$(id).next().next().text('사용가능한 비밀번호 입니다.');
 			$(id).next().next().css('color','#003399');
-			
+			$('#mPw_re').val('');
+			$('#mPw_re').css('border','1px solid gray');
+			$('#mPw_re').next().next().text('');
+
 		}
 		else
 		{
@@ -220,7 +223,6 @@ $(document).ready(function(){
 			$(id).next().next().text('1개 이상의 영소문자, 영대문자, 특수문자, 숫자를 포함해주세요(8글자 이상)');
 			$(id).next().next().css('color','red');
 			checkFlags[1]=0;
-			
 		}
 		
 	}

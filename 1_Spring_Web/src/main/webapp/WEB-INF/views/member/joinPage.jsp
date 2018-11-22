@@ -124,8 +124,7 @@ $(document).ready(function(){
 			case 'mEmail' : $(this).next().next().text('이메일을 입력해주세요');checkFlags[5]=0; break;
 			case 'mAddress-1' : $('#mAddress-2').next().next().text('주소를 입력해주세요');checkFlags[6]=0; break;
 			}
-			if($(this).attr('id') != 'mPw_re')
-			$(this).focus().select();
+			
 		}else{
 			switch($(this).attr('id'))
 			{
@@ -159,7 +158,10 @@ $(document).ready(function(){
 	
 	//아이디 중복 체크 메소드
 	function idCheck(id,data){
-		 
+		var regExpr =  /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g;
+		
+		if(!regExpr.test(data))
+		{
 		if(data.length>=4)
 		{
 		$.ajax({
@@ -177,7 +179,8 @@ $(document).ready(function(){
 					$(id).css('border','4px solid red');
 					$(id).next().next().text('이미 사용중인 아이디 입니다.');
 					$(id).next().next().css('color','red');
-					$(id).focus().select();
+					checkFlags[0]=0;
+				
 				}			
 			},
 			error : function(){
@@ -188,7 +191,15 @@ $(document).ready(function(){
 			$(id).css('border','4px solid red');
 			$(id).next().next().text('아이디는 최소 4글자 이상 입력해주세요');
 			$(id).next().next().css('color','red');
-			$(id).focus().select();
+			checkFlags[0]=0;
+		
+		}
+		}
+		else{
+			$(id).css('border','4px solid red');
+			$(id).next().next().text('아이디는 한글이 사용 불가 합니다.');
+			$(id).next().next().css('color','red');
+			checkFlags[0]=0;
 		}
 	}
 	
@@ -208,7 +219,8 @@ $(document).ready(function(){
 			$(id).css('border','4px solid red');
 			$(id).next().next().text('1개 이상의 영소문자, 영대문자, 특수문자, 숫자를 포함해주세요(8글자 이상)');
 			$(id).next().next().css('color','red');
-			$(id).focus().select();
+			checkFlags[1]=0;
+			
 		}
 		
 	}
@@ -228,6 +240,7 @@ $(document).ready(function(){
 			$(id).css('border','4px solid red');
 			$(id).next().next().text('동일한 비밀번호를 입력해주세요');
 			$(id).next().next().css('color','red');
+			checkFlags[1]=0;
 			
 		}
 		
@@ -246,7 +259,7 @@ $(document).ready(function(){
 			$(id).css('border','4px solid red');
 			$(id).next().next().text('이름을 정상적으로 작성해주세요');
 			$(id).next().next().css('color','red');
-			$(id).focus().select();
+			checkFlags[2]=0;
 		}
 		
 	}
@@ -268,7 +281,8 @@ $(document).ready(function(){
 					$(id).css('border','4px solid #red');
 					$(id).next().next().text('이미 사용중인 닉네임 입니다.');
 					$(id).next().next().css('color','red');
-					$(id).focus().select();
+					checkFlags[3]=0;
+					
 				}	
 			},
 			error : function(){
@@ -292,7 +306,7 @@ $(document).ready(function(){
 			$(id).css('border','4px solid red');
 			$(id).next().next().text('휴대폰 번호를 정상적으로 입력해주세요');
 			$(id).next().next().css('color','red');
-			$(id).focus().select();
+			checkFlags[4]=0;
 		}
 		
 	}
@@ -311,7 +325,7 @@ $(document).ready(function(){
 			$(id).css('border','4px solid red');
 			$(id).next().next().text('이메일을 정상적으로 입력해주세요');
 			$(id).next().next().css('color','red');
-			$(id).focus().select();
+			checkFlags[5]=0;
 		}
 	}
 	
@@ -324,16 +338,20 @@ $(document).ready(function(){
 			$('#mAddress-2').next().next().text('주소 정상 입력 완료');
 			$('#mAddress-2').next().next().css('color','#003399');
 			checkFlags[6]=1;
+		}else{
+			checkFlags[6]=0;
 		}
 		
 	}
 	
 	
+	/*
 	//한글입력 안되게 처리
 	$( 'input[class=not-kor]' ).on("blur keyup", function() {
 		$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '' ) );
 	});
 	
+	*/
 	
 	/*
 	  $("input[class=not-kor]").keydown(function(event){ 

@@ -22,7 +22,7 @@
     	margin-top : 20px;
     	margin-left : 300px;
     	width : 1000px;
-    	height : 1300px;
+    	height : 1550px;
     	
     }
     #contents-2{
@@ -31,7 +31,7 @@
     	padding-right: 150px;
     	text-align: left; width : 100%;
     	height : 85%;
-    	border : 1px solid red;
+  
     	
     }
    
@@ -83,10 +83,21 @@
 		font-size : 15px;
 		color: #003399;
 	}
+	#addrSearch{
+		width : 100px;
+		height : 50px;
+	}
+	.addr-2-hide{
+		display:none;
+	}
+	
 	
      
 </style>
 <script>
+
+var checkFlags=[0,0,0,0,0,0,0];
+
 $(document).ready(function(){
 	$('#contents-2 div input').focus(function(){
 		$(this).parent().css('border','2px solid #003399');
@@ -104,13 +115,17 @@ $(document).ready(function(){
 			$(this).next().next().css('color','red');
 			switch($(this).attr('id'))
 			{
-			case 'mId' : $(this).next().next().text('아이디를 입력해주세요'); break;
+			case 'mId' : $(this).next().next().text('아이디를 입력해주세요');checkFlags[0]=0; break;
 			case 'mPw' : $(this).next().next().text('비밀번호를 입력해주세요'); break;
-			case 'mPw_re' : $(this).next().next().text('재확인 비밀번호를 입력해주세요'); break;
-			case 'mNick' : $(this).next().next().text('닉네임을 입력해주세요'); break;
-			case 'mEmail' : $(this).next().next().text('이메일을 입력해주세요'); break;
-			case 'mAddress' : $(this).next().next().text('주소를 입력해주세요'); break;
+			case 'mPw_re' : $(this).next().next().text('재확인 비밀번호를 입력해주세요');checkFlags[1]=0; break;
+			case 'mName' : $(this).next().next().text('이름을 입력해주세요');checkFlags[2]=0; break;
+			case 'mNick' : $(this).next().next().text('닉네임을 입력해주세요');checkFlags[3]=0; break;
+			case 'mPhone' : $(this).next().next().text('휴대폰 번호를 입력해주세요');checkFlags[4]=0; break;
+			case 'mEmail' : $(this).next().next().text('이메일을 입력해주세요');checkFlags[5]=0; break;
+			case 'mAddress-1' : $('#mAddress-2').next().next().text('주소를 입력해주세요');checkFlags[6]=0; break;
 			}
+			if($(this).attr('id') != 'mPw_re')
+			$(this).focus().select();
 		}else{
 			switch($(this).attr('id'))
 			{
@@ -123,14 +138,20 @@ $(document).ready(function(){
 			//비밀번호 재확인 중복 체크
 			case 'mPw_re' : pwReCheck(this,data); break;
 			
+			//이름 작성 체크
+			case 'mName' : nameCheck(this,data);break;
+			
 			//닉네임 중복 체크
 			case 'mNick' : nickCheck(this,data);break;
+			
+			//휴대폰 번호 체크
+			case 'mPhone' : phoneCheck(this,data);break;
 			
 			//이메일 체크
 			case 'mEmail' : emailCheck(this,data);break;
 		
 			//주소 체크
-			case 'mAddress' : break;
+			case 'mAddress-2' : addressCheck(this,data);break;
 			}
 		}
 	});
@@ -151,10 +172,12 @@ $(document).ready(function(){
 					$(id).css('border','4px solid #003399');
 					$(id).next().next().text('사용 가능합니다.');
 					$(id).next().next().css('color','#003399');
+					checkFlags[0]=1;
 				}else{
 					$(id).css('border','4px solid red');
 					$(id).next().next().text('이미 사용중인 아이디 입니다.');
 					$(id).next().next().css('color','red');
+					$(id).focus().select();
 				}			
 			},
 			error : function(){
@@ -165,6 +188,7 @@ $(document).ready(function(){
 			$(id).css('border','4px solid red');
 			$(id).next().next().text('아이디는 최소 4글자 이상 입력해주세요');
 			$(id).next().next().css('color','red');
+			$(id).focus().select();
 		}
 	}
 	
@@ -177,12 +201,14 @@ $(document).ready(function(){
 			$(id).css('border','4px solid #003399');
 			$(id).next().next().text('사용한 비밀번호 입니다.');
 			$(id).next().next().css('color','#003399');
+			
 		}
 		else
 		{
 			$(id).css('border','4px solid red');
-			$(id).next().next().text('1개 이상의 영소문자, 영대문자, 특수문자, 숫자를 포함해주세요');
+			$(id).next().next().text('1개 이상의 영소문자, 영대문자, 특수문자, 숫자를 포함해주세요(8글자 이상)');
 			$(id).next().next().css('color','red');
+			$(id).focus().select();
 		}
 		
 	}
@@ -196,11 +222,31 @@ $(document).ready(function(){
 			$(id).css('border','4px solid #003399');
 			$(id).next().next().text('비밀번호 재확인 완료');
 			$(id).next().next().css('color','#003399');
+			checkFlags[1]=1;
 			
 		}else{
 			$(id).css('border','4px solid red');
 			$(id).next().next().text('동일한 비밀번호를 입력해주세요');
 			$(id).next().next().css('color','red');
+			
+		}
+		
+	}
+	
+	//이름 작성 체크 메소드
+	function nameCheck(id,data){
+		var regExp = /[가-힣]{2,}/;
+		if(regExp.test(data))
+		{
+			$(id).css('border','4px solid #003399');
+			$(id).next().next().text('이름 입력 확인');
+			$(id).next().next().css('color','#003399');
+			checkFlags[2]=1;
+		}else{
+			$(id).css('border','4px solid red');
+			$(id).next().next().text('이름을 정상적으로 작성해주세요');
+			$(id).next().next().css('color','red');
+			$(id).focus().select();
 		}
 		
 	}
@@ -217,10 +263,12 @@ $(document).ready(function(){
 					$(id).css('border','4px solid #003399');
 					$(id).next().next().text('사용 가능합니다.');
 					$(id).next().next().css('color','#003399');
+					checkFlags[3]=1;
 				}else{
 					$(id).css('border','4px solid #red');
 					$(id).next().next().text('이미 사용중인 닉네임 입니다.');
 					$(id).next().next().css('color','red');
+					$(id).focus().select();
 				}	
 			},
 			error : function(){
@@ -229,6 +277,25 @@ $(document).ready(function(){
 		});
 	}	
 	
+	
+	//휴대폰 번호 체크 메소드
+	function phoneCheck(id,data){
+		var data = data.replace(/[-]/g,'');
+		var regExp =  /^01([0|1|6|7|8|9]?)([0-9]{3,4})([0-9]{4})$/;
+		if(data.length>=10 && regExp.test(data))
+		{
+			$(id).css('border','4px solid #003399');
+			$(id).next().next().text('휴대폰 번호 정상 입력 완료');
+			$(id).next().next().css('color','#003399');
+			checkFlags[4]=1;
+		}else{
+			$(id).css('border','4px solid red');
+			$(id).next().next().text('휴대폰 번호를 정상적으로 입력해주세요');
+			$(id).next().next().css('color','red');
+			$(id).focus().select();
+		}
+		
+	}
 	
 	//이메일 체크 메소드
 	function emailCheck(id,data){
@@ -239,14 +306,27 @@ $(document).ready(function(){
 			$(id).css('border','4px solid #003399');
 			$(id).next().next().text('이메일 정상 입력 완료');
 			$(id).next().next().css('color','#003399');
-			
+			checkFlags[5]=1;
 		}else{
 			$(id).css('border','4px solid red');
 			$(id).next().next().text('이메일을 정상적으로 입력해주세요');
 			$(id).next().next().css('color','red');
+			$(id).focus().select();
 		}
 	}
 	
+	//주소 체크 메소드
+	function addressCheck(id,data){
+		
+		if(data.length>0)
+		{
+			$('#mAddress-2').css('border','4px solid #003399');
+			$('#mAddress-2').next().next().text('주소 정상 입력 완료');
+			$('#mAddress-2').next().next().css('color','#003399');
+			checkFlags[6]=1;
+		}
+		
+	}
 	
 	
 	
@@ -274,6 +354,25 @@ $(document).ready(function(){
 
 });
 
+function resultCheck(){
+	var count = 0;
+	
+	for(var i=0;i<checkFlags.length;i++)
+	{
+		if(checkFlags[i]==1)
+		{
+			count++;	
+		}
+	}
+	if(count==6)
+	{
+		return true;
+	}else{
+		alert("필수 항목은 모두 입력해주세요");
+		return false;
+	}
+}
+
 
 </script>
 <div id="container"  align="center">
@@ -287,15 +386,15 @@ $(document).ready(function(){
 			<hr style="border:2px solid black;">
 			
 			
-			<form id="joinForm">
+			<form id="joinForm" action="/member/khJoinMember.kh" method="post">
 			<label for="mId" class="inputLabel">아이디 <span>(필수)</span></label><br>
-			<div><input type="text" maxlength="10" class="not-kor" size="47" id="mId" placeholder="가입할 ID를 작성하세요" autofocus/>
+			<div><input type="text" maxlength="10" class="not-kor" size="47" name="mId" id="mId" placeholder="가입할 ID를 작성하세요" autofocus/>
 			<br><span></span>
 			</div>
 			<br><br>
 			
 			<label for="mPw" class="inputLabel">비밀번호 <span>(필수)</span></label><br>
-			<div><input type="password" maxlength="20" size="47" id="mPw"  placeholder="사용할 비밀번호를 입력하세요" />
+			<div><input type="password" maxlength="20" size="47" name="mPw" id="mPw"  placeholder="사용할 비밀번호를 입력하세요" />
 			<br><span></span>
 			</div>
 			<br><br>
@@ -306,25 +405,38 @@ $(document).ready(function(){
 			</div>
 			<br><br>
 			
+			<label for="mName" class="inputLabel">이름 <span>(필수)</span></label><br>
+			<div><input type="text" maxlength="8" size="47" name="mName" id="mName" placeholder="본인의 이름을 입력하세요" />
+			<br><span></span>
+			</div>
+			<br><br>
+			
 			<label for="mNick" class="inputLabel">닉네임 <span>(필수)</span></label><br>
-			<div><input type="text" maxlength="8" size="47" id="mNick" placeholder="사용할 닉네임을 입력하세요" />
+			<div><input type="text" maxlength="8" size="47" name="mNick" id="mNick" placeholder="사용할 닉네임을 입력하세요" />
 			<br><span></span>
 			</div>
 			<br><br>
 			
 			
+			<label for="mPhone" class="inputLabel">휴대폰 <span>(필수)</span></label><br>
+			<div><input type="text" maxlength="13" size="47" name="mPhone" id="mPhone" placeholder="휴대폰 번호를 입력해주세요" />  
+			<br><span></span>
+			</div>
+			<br><br>
+			
 			<label for="mEmail" class="inputLabel">이메일 <span>(필수)</span></label><br>
-			<div><input type="email" maxlength="20" size="47" id="mEmail" placeholder="등록할 이메일을 입력하세요 " />
+			<div><input type="email" maxlength="20" size="47" name="mEmail" id="mEmail" placeholder="등록할 이메일을 입력하세요 " />
 			<br><span></span>
 			</div>
 			<br><br>
 			
 			<label for="mAddress" class="inputLabel">주소 <span>(필수)</span></label><br>
-			<div "><input type="text" maxlength="50" size="47" id="mAddress" placeholder="주소를 등록하세요" />
+			<div><input type="text" onclick="addressSearch();" name="mAddress-1" maxlength="50" size="47" id="mAddress-1" placeholder="클릭하면 주소를 검색할 수 있습니다." />
+			<input type="hidden" maxlength="50" size="47" name="mAddress-2" id="mAddress-2" placeholder="나머지 주소를 작성하세요" />
 			<br><span></span>
-			</div><button onclick="addressSearch()">주소찾기</button>
-			<br><br>
-			<input id="joinBtn" type="submit"   class = "btn btn-primary" value="가입하기" onclick="return check();"/>
+			</div>
+			<br><br><br class="addr-2-hide"><br class="addr-2-hide"><br class="addr-2-hide"><br class="addr-2-hide">
+			<input id="joinBtn" type="submit"   class = "btn btn-primary" value="가입하기" onclick="return resultCheck();"/>
 			</form>
 			
 	</div>
@@ -383,7 +495,16 @@ $(document).ready(function(){
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 
-                document.getElementById('mAddress').value = data.jibunAddress;
+                document.getElementById('mAddress-1').value = data.jibunAddress;
+                
+                if(document.getElementById('mAddress-1').value.length>0)
+                {
+                	$('#mAddress-1').css('border','4px solid #003399');		
+        			$('#mAddress-2').attr('type','text');
+        			$('.addr-2-hide').css('display','block');
+        			
+                }
+                
 
                 // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
                 if(data.autoJibunAddress) {

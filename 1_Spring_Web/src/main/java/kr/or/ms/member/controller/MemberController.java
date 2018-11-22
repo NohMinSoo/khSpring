@@ -289,6 +289,41 @@ public class MemberController {
 		return "member/joinPage";
 	}
 	
+	
+	
+	/**
+	 * @Method Name : (선택된 메소드의 이름을 작성한다.)
+	 * @작성일 : (메소드를 작성한 일자를 기록한다.)
+	 * @작성자 : (작성자의 이름을 작성한다.)
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : (메소드가 수행하는 간단한 기능을 간략하게 기술한다.)
+	 * @Parameter :  (메소드의 입력 파라미터를 기술한다.)
+	 * @return : (메소드의 리턴타입을 작성한다.)
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	@RequestMapping(value="/member/khJoinMember.kh")
+	public String khJoinMember(HttpServletRequest request)
+	{
+		System.out.println("회원 가입 메소드 호출 (khJoinMember)");
+		
+		Member oneMember = new Member();
+		
+		
+		oneMember.setmId(request.getParameter("mId"));
+		oneMember.setmPw(request.getParameter("mPw"));
+		oneMember.setmName(request.getParameter("mName"));
+		oneMember.setmNickName(request.getParameter("mNick"));
+		oneMember.setmPhone(request.getParameter("mPhone"));
+		oneMember.setmEmail(request.getParameter("mEmail"));
+		oneMember.setmAddress(request.getParameter("mAddress-1")+" "+request.getParameter("mAddress-2"));
+		
+		
+		System.out.println(oneMember);
+		
+		
+		return null;
+	}
+	
 }
 
 

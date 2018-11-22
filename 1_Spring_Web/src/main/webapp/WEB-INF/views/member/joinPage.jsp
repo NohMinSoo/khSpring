@@ -329,16 +329,23 @@ $(document).ready(function(){
 	}
 	
 	
-	
 	//한글입력 안되게 처리
-	  $("input[class=not-kor]").keyup(function(event){ 
-
+	$( 'input[class=not-kor]' ).on("blur keyup", function() {
+		$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '' ) );
+	});
+	
+	
+	/*
+	  $("input[class=not-kor]").keydown(function(event){ 
+		  
+		  
 	   if (!(event.keyCode >=37 && event.keyCode<=40)) {
 
 	    var inputVal = $(this).val();
 
 	    var expr = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
 		   if(expr.test(inputVal)){
+			$(this).text('');
 		    $(this).next().next().css('color','red');
 			$(this).next().next().text('한글은 사용할 수 없습니다.');
 		   }else{
@@ -348,8 +355,9 @@ $(document).ready(function(){
 		    $(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
 	   }
 
+		  
 	  });
-
+	*/
 
 
 });
@@ -388,7 +396,7 @@ function resultCheck(){
 			
 			<form id="joinForm" action="/member/khJoinMember.kh" method="post">
 			<label for="mId" class="inputLabel">아이디 <span>(필수)</span></label><br>
-			<div><input type="text" maxlength="10" class="not-kor" size="47" name="mId" id="mId" placeholder="가입할 ID를 작성하세요" autofocus/>
+			<div><input type="text" style="ime-mode:disable;" maxlength="10" class="not-kor" size="47" name="mId" id="mId" placeholder="가입할 ID를 작성하세요" autofocus/>
 			<br><span></span>
 			</div>
 			<br><br>

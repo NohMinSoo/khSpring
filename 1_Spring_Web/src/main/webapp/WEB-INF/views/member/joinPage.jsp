@@ -364,7 +364,7 @@ function resultCheck(){
 			count++;	
 		}
 	}
-	if(count==6)
+	if(count==7)
 	{
 		return true;
 	}else{

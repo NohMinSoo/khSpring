@@ -67,11 +67,28 @@
   		WHERE M_ID = #{mId}
   	</select>
   	
-  	<select id="addressModify" >
+  	<select id="addressModify">
   		update MEMBER
   		set M_ADDRESS = #{data}
   		WHERE M_ID = #{mId}
   	</select>
   	
+  	<insert id="oneMemberJoin" parameterType="Member">
+  		insert into MEMBER values(seq_member_no.nextval,
+  								#{mId},#{mPw},#{mName},#{mNickName},#{mEmail},
+  								#{mPhone},#{mAddress},'Y',default)
+  	</insert>
+  	
   	
 </mapper>
+
+
+
+
+
+
+
+
+
+
+

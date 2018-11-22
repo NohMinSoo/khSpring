@@ -146,6 +146,12 @@ public class MemberDao {
 	}
 
 
+	public int insertOneMemberJoin(SqlSessionTemplate sqlSession, Member oneMember) {
+		
+		return sqlSession.update("member.oneMemberJoin", oneMember);
+	}
+
+
 
 
 	

@@ -316,8 +316,15 @@ public class MemberController {
 		oneMember.setmEmail(request.getParameter("mEmail"));
 		oneMember.setmAddress(request.getParameter("mAddress-1")+" "+request.getParameter("mAddress-2"));
 		
+		int result = mService.insertOneMemberJoin(oneMember);
 		
-		return null;
+		if(result>0)
+		{
+			return "member/khJoinSuccess";
+		}else {
+			
+			return "member/error";
+		}
 	}
 	
 }

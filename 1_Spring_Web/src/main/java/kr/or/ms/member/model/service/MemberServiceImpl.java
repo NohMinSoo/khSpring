@@ -72,6 +72,11 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public int insertOneMemberJoin(Member oneMember) {
+		return  mDao.insertOneMemberJoin(sqlSession,oneMember);
+	}
+
 	
 }
 

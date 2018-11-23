@@ -152,6 +152,17 @@ public class MemberDao {
 	}
 
 
+	public Member findOneMemberId(SqlSessionTemplate sqlSession, String mName, String mEmail) {
+		
+		HashMap<String,String> map = new HashMap<String,String>();
+		
+		map.put("mName", mName);
+		map.put("mEmail", mEmail);
+		
+		return sqlSession.selectOne("member.findOneMemberId", map);
+	}
+
+
 
 
 	

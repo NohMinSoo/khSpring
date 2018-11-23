@@ -327,6 +327,69 @@ public class MemberController {
 		}
 	}
 	
+	
+	
+	/**
+	 * @Method Name : idPwFindPageCall
+	 * @작성일 : 2018-11-23
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 아이디/패스워드 검색 사이트 호출
+	 * @Parameter :  (메소드의 입력 파라미터를 기술한다.)
+	 * @return : String
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	@RequestMapping(value="/member/idPwFindPage.kh")
+	public String idPwFindPageCall()
+	{
+		return "member/idPwFindPage";
+	}
+	
+	
+	
+	
+	
+	/**
+	 * @Method Name : memberIdFind
+	 * @작성일 : 2018-11-23
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 아이디 찾기 작동 컨트롤러 메소드
+	 * @Parameter :  HttpServletRequest request, HttpServletResponse response
+	 * @return : void
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	@RequestMapping(value="/member/memberIdFind.kh")
+	public void memberIdFind(HttpServletRequest request, HttpServletResponse response)
+	{
+		String mName = request.getParameter("mName");
+		String mEmail = request.getParameter("mEmail");
+		
+		String mId = mService.findOneMemberId(mName,mEmail);
+		
+	
+		
+	}
+	
+	/**
+	 * @Method Name : memberPwFind
+	 * @작성일 : 2018-11-23
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 비밀번호 찾기 작동 컨트롤러 메소드
+	 * @Parameter :  HttpServletRequest request, HttpServletResponse response
+	 * @return : void
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	@RequestMapping(value="/member/memberPwFind.kh")
+	public void memberPwFind(HttpServletRequest request, HttpServletResponse response)
+	{
+		String mId = request.getParameter("mId");
+		String mName = request.getParameter("mName");
+		String mEmail = request.getParameter("mEmail");
+		
+	}
+	
 }
 
 

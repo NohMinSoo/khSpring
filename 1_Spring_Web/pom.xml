@@ -22,11 +22,38 @@
 			<url>https://maven.atlassian.com/3rdparty/</url>
 		</repository>
 	</repositories>
+	
+
+	
 
 
 	
 	<dependencies>
 	
+		<!-- Spring mail -->
+		<dependency>
+			 <groupId>javax.mail</groupId>
+			 <artifactId>mail</artifactId>
+			 <version>1.4.7</version>
+		</dependency>
+		
+		
+		<!-- JavaMailSender -->
+		<dependency>
+			 <groupId>org.springframework</groupId>
+			 <artifactId>spring-context-support</artifactId>
+			 <version>5.0.6.RELEASE</version>
+		</dependency>
+			
+	
+	
+		<!-- JavaMail API Jar -->
+		<dependency>
+			    <groupId>javax.mail</groupId>
+			    <artifactId>javax.mail-api</artifactId>
+			    <version>1.6.0</version>
+		</dependency>
+		
 		<!-- DBCP -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>

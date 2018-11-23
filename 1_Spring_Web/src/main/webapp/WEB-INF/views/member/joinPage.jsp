@@ -215,7 +215,7 @@ $(document).ready(function(){
 			$('#mPw_re').val('');
 			$('#mPw_re').css('border','1px solid gray');
 			$('#mPw_re').next().next().text('');
-
+			checkFlags[1]=0;
 		}
 		else
 		{

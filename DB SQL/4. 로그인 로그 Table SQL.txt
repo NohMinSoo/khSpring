@@ -1,12 +1,21 @@
+CREATE TABLE MEMBER_LOGIN_LOG(
+	mll_ID	NUMBER PRIMARY KEY,             -- 로그 번호 (ID)
+	M_ID VARCHAR2(15),                      -- 회원 아이디
+    mll_success CHAR  CHECK (mll_success IN ('Y','N')),                       -- 로그인 성공 실패
+    mll_datetime TimeStamp,                 -- 로그인 일시
+    mll_ip  VARCHAR2(20),                   -- 로그인 시도 IP
+    mll_reason VARCHAR(500),                -- 로그인 성공/실패 이유
+    mll_userAgent VARCHAR2(100),            -- 로그인한 브라우저의 user agent
+    mll_url     VARCHAR2(255),              -- 로그인한 페이지 주소
+    mll_referer VARCHAR2(255)               -- 이전 페이지 주소 
+);
 
-로그NO
-회원ID
-로그인 성공여부
-로그인 일시
-로그인 IP
-로그인 실패 이유
-로그인한 브라우저의 user Agent
-로그인한 페이지 주소
-로그인 이전 페이지 주소
+CREATE SEQUENCE seq_MEMBER_LOGIN_LOG;
 
+insert into MEMBER_LOGIN_LOG VALUES
+(seq_MEMBER_LOGIN_LOG.nextval,'test1','Y',SYSDATE,'127.0.0.1','정상 로그인','test...','http://http://localhost/member/loginPage.kh',
+'http://localhost/index.jsp');
 
+commit;
+
+select * from MEMBER_LOGIN_LOG;

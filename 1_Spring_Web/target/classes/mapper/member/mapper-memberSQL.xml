@@ -80,13 +80,24 @@
   	</insert>
   	
   	<select id="findOneMemberId" resultType="Member">
-  		select M_ID AS mId FROM MEMBER WHERE M_NAME = #{mName} AND M_EMAIL = #{mEmail}
+  		select M_ID AS mId, M_EMAIL AS mEmail FROM MEMBER WHERE M_NAME = #{mName} AND M_EMAIL = #{mEmail}
   	</select>
   	
   	<select id="findOneMemberPw" resultType="Member">
-  		select M_PW AS mPw FROM MEMBER WHERE M_ID = #{mId} AND M_NAME = #{mName} AND M_EMAIL = #{mEmail}
+  		select M_Name AS mName, M_PW AS mPw, M_EMAIL AS mEmail FROM MEMBER WHERE M_ID = #{mId} AND M_NAME = #{mName} AND M_EMAIL = #{mEmail}
   	</select>
   	
+  	<update id="updateRandomPassword">
+  		update MEMBER
+  		set M_Pw = #{ramdomPassword}
+  		WHERE M_ID = #{mId}
+  	</update>
+  	
+  	<update id="updatePw">
+  		update MEMBER
+  		set M_Pw = #{newPw}
+  		WHERE M_ID = #{mId} AND M_PW = #{prePw}
+  	</update>
   	
 </mapper>
 

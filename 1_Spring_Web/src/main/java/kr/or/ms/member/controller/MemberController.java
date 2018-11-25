@@ -1,10 +1,17 @@
 package kr.or.ms.member.controller;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,6 +35,9 @@ public class MemberController {
 	
 	@Resource(name="memberService")
 	MemberService mService;
+	
+	@Autowired
+	private JavaMailSender mailSender; //메일 전송용 객체
 	
 	/**
 	 * @Method Name : (선택된 메소드의 이름을 작성한다.)
@@ -365,11 +375,65 @@ public class MemberController {
 		String mName = request.getParameter("mName");
 		String mEmail = request.getParameter("mEmail");
 		
-		String mId = mService.findOneMemberId(mName,mEmail);
+		Member oneMember = mService.findOneMemberId(mName,mEmail);
 		
-	
+		System.out.println("아이디 찾기 유저" + oneMember);
+		
+		if(oneMember!=null)
+		{
+			try {
+				sendMail("kh.test201811@gmail.com",oneMember.getmEmail(),"[kh] 아이디 찾기 결과 입니다",
+						"안녕하세요 kh정보 교육원 입니다.\n"
+						+ "귀하의 아이디는 ["+oneMember.getmId()+"] 입니다.");
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			try {
+				response.getWriter().print("true");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else {
+			try {
+				response.getWriter().print("false");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 	}
+	
+	
+	/**
+	 * @Method Name : sendMail
+	 * @작성일 : 2018-11-26
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 메일을 보낼때 사용되는 메소드
+	 * @Parameter :  String from, String to, String subject, String mailText
+	 * @return : void
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	public void sendMail(String from, String to, String subject, String mailText) throws FileNotFoundException, URISyntaxException {
+		 try{
+		  SimpleMailMessage message = new SimpleMailMessage();
+		  message.setFrom(from);
+		  message.setTo(to);
+		  message.setSubject(subject);
+		  message.setText(mailText);
+		  mailSender.send(message);
+		 }catch(Exception e){
+		  e.printStackTrace();
+		 }   
+		}	
+	
 	
 	/**
 	 * @Method Name : memberPwFind
@@ -388,8 +452,88 @@ public class MemberController {
 		String mName = request.getParameter("mName");
 		String mEmail = request.getParameter("mEmail");
 		
+		System.out.println("패스워드 찾기 메소드 호출");
+		Member oneMember = mService.findOneMemberPw(mId,mName,mEmail);
+		
+		if(oneMember != null)
+		{
+			try {
+				sendMail("kh.test201811@gmail.com",oneMember.getmEmail(),"[kh] 임시 비밀번호 발송",
+						"안녕하세요 kh정보 교육원 입니다.\n"
+						+ "귀하의 임시 비밀번호는 ["+oneMember.getmPw()+"] 입니다. \n"
+						+ "로그인 후 꼭 변경 하시길 바랍니다.\n");
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			try {
+				response.getWriter().print("true");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else
+		{
+			try {
+				response.getWriter().print("false");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
+	
+
+	/**
+	 * @Method Name : memberPwChange
+	 * @작성일 : 2018-11-26
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 회원의 비밀번호를 변경하는 컨트롤러 메소드 (ajax 통신)
+	 * @Parameter :  HttpServletRequest request, HttpServletResponse response
+	 * @return : void
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	@RequestMapping(value="/member/memberPwChange.kh")
+	public void memberPwChange(HttpServletRequest request, HttpServletResponse response)
+	{
+		try {
+			String prePw = request.getParameter("prePw");
+			String newPw = request.getParameter("newPw");
+			Member oneMember = (Member)(request.getSession(false)).getAttribute("member");
+			String mId = oneMember.getmId();
+			
+			int result = mService.updateMemberPw(mId,prePw,newPw);
+		
+			if(result>0)
+			{
+				oneMember.setmPw(newPw);
+				request.setAttribute("member", oneMember);
+				try {
+					response.getWriter().print("true");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else {
+				throw new Exception();
+			}
+		} catch (Exception e) {
+			try {
+				response.getWriter().print("false");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+			
+	}
 }
 
 

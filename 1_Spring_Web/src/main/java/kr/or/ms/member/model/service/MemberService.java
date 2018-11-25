@@ -76,9 +76,50 @@ public interface MemberService {
 	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
 	 * @Method 설명 : 회원의 아이디를 검색할 수 있는 서비스 메소드
 	 * @Parameter :  String mName, String mEmail
+	 * @return : Member
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	public Member findOneMemberId(String mName, String mEmail);
+	
+	
+	/**
+	 * @Method Name : findOneMemberPw
+	 * @작성일 : 2018-11-26
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : (메소드가 수행하는 간단한 기능을 간략하게 기술한다.)
+	 * @Parameter :  String mId,String mName,String mEmail
+	 * @return : Member
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	public Member findOneMemberPw(String mId,String mName,String mEmail);
+	
+	
+	
+	/**
+	 * @Method Name : getRamdomPassword
+	 * @작성일 : 2018-11-26
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 길이를 입력하면 패스워드를 랜덤으로 변경 시키는 메소드
+	 * @Parameter :  int len
 	 * @return : String
 	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
 	 */
-	public String findOneMemberId(String mName, String mEmail);
+	public String getRamdomPassword(int len);
+
+	
+	
+	/**
+	 * @Method Name : updateMemberPw
+	 * @작성일 : 2018-11-26
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 해당 회원의 비밀번호를 변경하는 서비스 메소드
+	 * @Parameter :  String mId, String prePw, String newPw
+	 * @return : int
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	public int updateMemberPw(String mId, String prePw, String newPw);
 	
 }

@@ -146,6 +146,19 @@ public class Member {
 	public void setmEnroll(Date mEnroll) {
 		this.mEnroll = mEnroll;
 	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Member [mNo=" + mNo + ", mId=" + mId + ", mPw=" + mPw + ", mName=" + mName + ", mNickName=" + mNickName
+				+ ", mEmail=" + mEmail + ", mPhone=" + mPhone + ", mAddress=" + mAddress + ", mActive=" + mActive
+				+ ", mEnroll=" + mEnroll + "]";
+	}
+	
+
+	
 	
 	
 	

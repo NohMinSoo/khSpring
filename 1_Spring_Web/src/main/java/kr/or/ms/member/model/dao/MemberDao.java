@@ -34,6 +34,20 @@ public class MemberDao {
 
 	
 	/**
+	 * @Method Name : selectIdCheck
+	 * @작성일 : 2018-11-21
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 중복되는 아이디를 체크하기 위한 메소드
+	 * @Parameter :  SqlSessionTemplate sqlSession, String id
+	 * @return : Member
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	public Member selectIdCheck(SqlSessionTemplate sqlSession, String id) {
+		return sqlSession.selectOne("member.idCheck",id);
+	}
+	
+	/**
 	 * @Method Name : selectNickCheck
 	 * @작성일 : 2018-11-19
 	 * @작성자 : 노민수
@@ -130,6 +144,26 @@ public class MemberDao {
 		
 		return sqlSession.update("member.addressModify", map);
 	}
+
+
+	public int insertOneMemberJoin(SqlSessionTemplate sqlSession, Member oneMember) {
+		
+		return sqlSession.update("member.oneMemberJoin", oneMember);
+	}
+
+
+	public Member findOneMemberId(SqlSessionTemplate sqlSession, String mName, String mEmail) {
+		
+		HashMap<String,String> map = new HashMap<String,String>();
+		
+		map.put("mName", mName);
+		map.put("mEmail", mEmail);
+		
+		return sqlSession.selectOne("member.findOneMemberId", map);
+	}
+
+
+
 
 	
 }

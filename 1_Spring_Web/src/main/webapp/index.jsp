@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>KH 정보 교육원</title>
+<link rel="shortcut icon" href="/resources/png/03_KH정보교육원_원형컬러.png">
+<title>KH정보교육원</title>
 </head>
 <%@ tagliburi ="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 

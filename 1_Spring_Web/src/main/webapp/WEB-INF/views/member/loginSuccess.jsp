@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="/resources/png/03_KH정보교육원_원형컬러.png">
 <title>로그인 성공</title>
 </head>
 

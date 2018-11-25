@@ -17,6 +17,22 @@
   		
   	</select>
   	
+  	<select id="idCheck" resultType="Member">
+  		select M_NO AS mNo,
+  				M_ID AS mId,
+  				M_PW AS mPw,
+  				M_NAME AS mName,
+  				M_NICKNAME AS mNickName,
+  				M_EMAIL AS mEmail,
+  				M_PHONE AS mPhone,
+  				M_ADDRESS AS mAddress,
+  				M_ACTIVE AS mActive,
+  				M_ENROLL AS mEnroll
+  		from MEMBER
+  		WHERE M_ID = #{id}
+  		
+  	</select>
+  	
   	<select id="nickCheck" resultType="Member">
   		select M_NO AS mNo,
   				M_ID AS mId,
@@ -33,29 +49,54 @@
   		
   	</select>
   	
-  	<select id="nickModify" >
+  	<update id="nickModify" >
   		update MEMBER
   		set M_NICKNAME = #{data}
   		WHERE M_ID = #{mId}
-  	</select>
+  	</update>
   	
-  	<select id="emailModify" >
+  	<update id="emailModify" >
   		update MEMBER
   		set M_EMAIL = #{data}
   		WHERE M_ID = #{mId}
-  	</select>
+  	</update>
   	
-  	<select id="phoneModify" >
+  	<update id="phoneModify" >
   		update MEMBER
   		set M_PHONE = #{data}
   		WHERE M_ID = #{mId}
-  	</select>
+  	</update>
   	
-  	<select id="addressModify" >
+  	<update id="addressModify">
   		update MEMBER
   		set M_ADDRESS = #{data}
   		WHERE M_ID = #{mId}
+  	</update>
+  	
+  	<insert id="oneMemberJoin" parameterType="Member">
+  		insert into MEMBER values(seq_member_no.nextval,
+  								#{mId},#{mPw},#{mName},#{mNickName},#{mEmail},
+  								#{mPhone},#{mAddress},'Y',default)
+  	</insert>
+  	
+  	<select id="findOneMemberId" resultType="Member">
+  		select M_ID AS mId FROM MEMBER WHERE M_NAME = #{mName} AND M_EMAIL = #{mEmail}
+  	</select>
+  	
+  	<select id="findOneMemberPw" resultType="Member">
+  		select M_PW AS mPw FROM MEMBER WHERE M_ID = #{mId} AND M_NAME = #{mName} AND M_EMAIL = #{mEmail}
   	</select>
   	
   	
 </mapper>
+
+
+
+
+
+
+
+
+
+
+

@@ -141,7 +141,7 @@ public class MemberController {
 	}
 	
 	/**
-	 * @Method Name : memberInfo
+	 * @Method Name : idCheck
 	 * @작성일 : 2018-11-19
 	 * @작성자 : 노민수
 	 * @변경이력 :  
@@ -150,8 +150,39 @@ public class MemberController {
 	 * @return : void 
 	 * @예외처리 :  Null Pointer Exception
 	 */
-	@RequestMapping(value="/member/mModifyNickCheck.kh")
-	public void mModifyNickCheck(HttpServletRequest request, HttpServletResponse response)
+	@RequestMapping(value="/member/idCheck.kh")
+	public void idCheck(HttpServletRequest request, HttpServletResponse response)
+	{
+		String id = request.getParameter("id");
+		int result = mService.selectIdCheck(id);
+		
+		try {
+			if(result>0) // 사용 가능하다면
+			{
+				response.getWriter().print("true");
+			}else //사용 불가능하다면
+			{
+				response.getWriter().print("false");
+			}
+		} catch (Exception e) {
+			System.out.println("ID 체크시(idCheckCheck) 문제 발생하였음");
+		}
+		
+			
+	}
+	
+	/**
+	 * @Method Name : nickCheck
+	 * @작성일 : 2018-11-19
+	 * @작성자 : 노민수
+	 * @변경이력 :  
+	 * @Method 설명 : 닉네임 체크 메소드
+	 * @Parameter :  HttpServletRequest request
+	 * @return : void 
+	 * @예외처리 :  Null Pointer Exception
+	 */
+	@RequestMapping(value="/member/nickCheck.kh")
+	public void nickCheck(HttpServletRequest request, HttpServletResponse response)
 	{
 		String nick = request.getParameter("nick");
 		int result = mService.selectNickCheck(nick);
@@ -165,11 +196,13 @@ public class MemberController {
 				response.getWriter().print("false");
 			}
 		} catch (Exception e) {
-			System.out.println("ID 체크시(mModifyNickCheck) 문제 발생하였음");
+			System.out.println("닉네임 체크시(NickCheck) 문제 발생하였음");
 		}
 		
 			
 	}
+	
+
 	
 	
 	/**
@@ -223,7 +256,139 @@ public class MemberController {
 	}
 	
 	
+	/**
+	 * @Method Name : joinPageAgreeCall
+	 * @작성일 : 2018-11-20
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 회원 가입시 이용약관을 호출하는 메소드
+	 * @Parameter :  null
+	 * @return : String
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	@RequestMapping(value="/member/joinPageAgree.kh")
+	public String joinPageAgreeCall()
+	{
+		return "member/joinPageAgree";
+	}
 	
+	
+	/**
+	 * @Method Name : joinPageCall
+	 * @작성일 : 2018-11-20
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 회원가입 페이지(join Page)를 호출하는 메소드
+	 * @Parameter :  null
+	 * @return : String
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	@RequestMapping(value="/member/joinPage.kh")
+	public String joinPageCall()
+	{
+		return "member/joinPage";
+	}
+	
+	
+	
+	/**
+	 * @Method Name : khJoinMember
+	 * @작성일 : 2018-11-22
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 회원가입 정보를 받아서 처리하는 메소드
+	 * @Parameter :  HttpServletRequest request
+	 * @return : String
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	@RequestMapping(value="/member/khJoinMember.kh")
+	public String khJoinMember(HttpServletRequest request)
+	{
+		System.out.println("회원 가입 메소드 호출 (khJoinMember)");
+		
+		Member oneMember = new Member();
+		
+		oneMember.setmId(request.getParameter("mId"));
+		oneMember.setmPw(request.getParameter("mPw"));
+		oneMember.setmName(request.getParameter("mName"));
+		oneMember.setmNickName(request.getParameter("mNick"));
+		oneMember.setmPhone(request.getParameter("mPhone"));
+		oneMember.setmEmail(request.getParameter("mEmail"));
+		oneMember.setmAddress(request.getParameter("mAddress-1")+" "+request.getParameter("mAddress-2"));
+		
+		int result = mService.insertOneMemberJoin(oneMember);
+		
+		if(result>0)
+		{
+			return "member/khJoinSuccess";
+		}else {
+			
+			return "member/error";
+		}
+	}
+	
+	
+	
+	/**
+	 * @Method Name : idPwFindPageCall
+	 * @작성일 : 2018-11-23
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 아이디/패스워드 검색 사이트 호출
+	 * @Parameter :  (메소드의 입력 파라미터를 기술한다.)
+	 * @return : String
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	@RequestMapping(value="/member/idPwFindPage.kh")
+	public String idPwFindPageCall()
+	{
+		return "member/idPwFindPage";
+	}
+	
+	
+	
+	
+	
+	/**
+	 * @Method Name : memberIdFind
+	 * @작성일 : 2018-11-23
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 아이디 찾기 작동 컨트롤러 메소드
+	 * @Parameter :  HttpServletRequest request, HttpServletResponse response
+	 * @return : void
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	@RequestMapping(value="/member/memberIdFind.kh")
+	public void memberIdFind(HttpServletRequest request, HttpServletResponse response)
+	{
+		String mName = request.getParameter("mName");
+		String mEmail = request.getParameter("mEmail");
+		
+		String mId = mService.findOneMemberId(mName,mEmail);
+		
+	
+		
+	}
+	
+	/**
+	 * @Method Name : memberPwFind
+	 * @작성일 : 2018-11-23
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 비밀번호 찾기 작동 컨트롤러 메소드
+	 * @Parameter :  HttpServletRequest request, HttpServletResponse response
+	 * @return : void
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	@RequestMapping(value="/member/memberPwFind.kh")
+	public void memberPwFind(HttpServletRequest request, HttpServletResponse response)
+	{
+		String mId = request.getParameter("mId");
+		String mName = request.getParameter("mName");
+		String mEmail = request.getParameter("mEmail");
+		
+	}
 	
 }
 

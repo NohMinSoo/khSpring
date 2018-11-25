@@ -44,5 +44,41 @@ public interface MemberService {
 	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
 	 */
 	public int updateOneMember(String mId,String id, String data);
+
+	/**
+	 * @Method Name : selectIdCheck
+	 * @작성일 : 2018-11-21
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 회원 ID 중복 체크를 위한 메소드
+	 * @Parameter :  String id
+	 * @return : int
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	public int selectIdCheck(String id);
+
+	/**
+	 * @Method Name :insertOneMemberJoin
+	 * @작성일 : 2018-11-22
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 회원 가입을 처리할 수 있는 서비스 메소드
+	 * @Parameter :  Member oneMember
+	 * @return : int
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	public int insertOneMemberJoin(Member oneMember);
+
+	/**
+	 * @Method Name : findOneMemberId
+	 * @작성일 : 2018-11-23
+	 * @작성자 : 노민수
+	 * @변경이력 :  (메소드가 변경되는 경우 해당 이력을 간략하게 작성한다.)
+	 * @Method 설명 : 회원의 아이디를 검색할 수 있는 서비스 메소드
+	 * @Parameter :  String mName, String mEmail
+	 * @return : String
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	public String findOneMemberId(String mName, String mEmail);
 	
 }

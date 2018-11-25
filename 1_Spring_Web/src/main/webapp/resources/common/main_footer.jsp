@@ -13,7 +13,7 @@
 </style>
 <body>
 <div id="bottom_copy">
-		<p class="maincopy">KH정보교육원&nbsp; | &nbsp;사업자등록번호 : 851-87-00622&nbsp; | &nbsp;서울 강남 제2014-01호&nbsp; | &nbsp;대표자 : 양진선&nbsp; | &nbsp;책임자 : 양성남&nbsp; | &nbsp; 개인정보관리책임자 : 이소영</p>
+		<p class="maincopy">KH정보교육원&nbsp; | &nbsp;사업자등록번호 : 585-63-00622&nbsp; | &nbsp;서울 강남 제2014-01호&nbsp; | &nbsp;대표자 : 양진선&nbsp; | &nbsp;책임자 : 노민수 &nbsp; | &nbsp; 개인정보관리책임자 : 이윤수</p>
 		<p class="subcopy" style="padding-bottom: 10px;">
 		강남지원 1관 : 서울특별시 강남구 테헤란로14길 6 남도빌딩 2F, 3F, 4F, 5F<br>
 		강남지원 2관 : 서울특별시 강남구 테헤란로10길 9 그랑프리 빌딩 3F, 4F, 5F, 7F<br>

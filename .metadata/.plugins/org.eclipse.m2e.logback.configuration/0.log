@@ -10639,3 +10639,7 @@ java.io.FileNotFoundException: C:\Users\³ë¹Î¼ö\.m2\repository\com\oracle\ojdbc6\
 2018-11-19 21:55:41,186 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2018-11-19 21:55:41,187 [Worker-52] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
 2018-11-19 21:55:41,191 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-11-19 22:43:13,957 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-11-19 22:43:13,970 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2018-11-19 22:43:13,976 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-11-19 22:43:13,981 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource

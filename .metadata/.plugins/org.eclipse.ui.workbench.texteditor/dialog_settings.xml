@@ -2,12 +2,18 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Servlet" key="selection"/>
+		<item value="" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="sample4_execDaumPostcode"/>
+			<item value="sample4_jibunAddress"/>
+			<item value="sample4_postcode"/>
+			<item value="sample3_postcode"/>
+			<item value="주소"/>
+			<item value="우편번호 찾기"/>
 			<item value="servlet"/>
 			<item value="nickCheck"/>
 			<item value="nickCheck "/>

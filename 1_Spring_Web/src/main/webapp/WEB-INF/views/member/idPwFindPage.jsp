@@ -104,7 +104,10 @@ $(document).ready(function(){
 				success : function(result){
 						if(result=='true')
 						{
-							alert('아이디가 이메일로 발송되었습니다.');	
+							alert('아이디가 이메일로 발송되었습니다.');
+							$('#mNameFindId').val('');
+							$('#mEmailFindId-1').val('');
+							$('#mEmailFindId-2').val('');		
 						}else{
 							alert('정보가 일치하지 않습니다. 다시 확인해주세요');
 						}
@@ -133,7 +136,11 @@ $(document).ready(function(){
 				success : function(result){
 						if(result=='true')
 						{
-							alert('비밀번호가 이메일로 발송되었습니다.');	
+							alert('임시 비밀번호가 이메일로 발송되었습니다.');	
+							$('#mIdFindPw').val('');
+							$('#mNameFindPw').val('');
+							$('#mEmailFindPw-1').val('');
+							$('#mEmailFindPw-2').val('');
 						}else{
 							alert('정보가 일치하지 않습니다. 다시 확인해주세요');
 						}

@@ -163,6 +163,41 @@ public class MemberDao {
 	}
 
 
+	public Member findOneMemberPw(SqlSessionTemplate sqlSession, String mId, String mName, String mEmail) {
+		
+		HashMap<String,String> map = new HashMap<String,String>();
+		
+		map.put("mId", mId);
+		map.put("mName", mName);
+		map.put("mEmail", mEmail);
+		
+		return sqlSession.selectOne("member.findOneMemberPw", map);
+
+	}
+
+
+	public int getRamdomPassword(SqlSessionTemplate sqlSession, String mId, String ramdomPassword) {
+		
+		HashMap<String,String> map = new HashMap<String,String>();
+		
+		map.put("mId", mId);
+		map.put("ramdomPassword", ramdomPassword);
+
+		return sqlSession.update("member.updateRandomPassword", map);
+	}
+
+
+	public int updateMemberPw(SqlSessionTemplate sqlSession, String mId, String prePw, String newPw) {
+		HashMap<String,String> map = new HashMap<String,String>();
+		
+		map.put("mId", mId);
+		map.put("prePw", prePw);
+		map.put("newPw", newPw);
+		
+		return sqlSession.update("member.updatePw", map);
+	}
+
+
 
 
 	

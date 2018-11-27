@@ -152,6 +152,7 @@
 	
 	
 	<jsp:include page="/resources/common/sub_my_header.jsp"></jsp:include>
+	<br><br>
 	<div id="wrapper">
 		<div id="contents">
 				<center>

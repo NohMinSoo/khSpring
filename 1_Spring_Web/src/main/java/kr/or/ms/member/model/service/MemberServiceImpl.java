@@ -78,13 +78,49 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String findOneMemberId(String mName, String mEmail) {
-		Member oneMember = mDao.findOneMemberId(sqlSession,mName,mEmail);
-		
-		return oneMember.getmId(); 
+	public Member findOneMemberId(String mName, String mEmail) {
+		return  mDao.findOneMemberId(sqlSession,mName,mEmail);
 	}
 
+	@Override
+	public Member findOneMemberPw(String mId, String mName, String mEmail) {
+		
+		Member oneMember = mDao.findOneMemberPw(sqlSession,mId,mName,mEmail);
+		
+		if(oneMember != null)
+		{
+			System.out.println("해당 사용자는 확인 완료됨");
+			String randomPw = getRamdomPassword(8);
+			int result  = mDao.getRamdomPassword(sqlSession,mId,randomPw);
+			System.out.println("비밀번호 랜덤으로 변경됨");	
+			oneMember.setmPw(randomPw);
+			return oneMember;
+		}else {
+			return null;
+		}
+		
+		
+	}
 	
+	@Override
+	public String getRamdomPassword(int len) { 
+		char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' }; 
+		int idx = 0; 
+		StringBuffer sb = new StringBuffer(); 
+		System.out.println("charSet.length :::: "+charSet.length); 
+		for (int i = 0; i < len; i++) { 
+			idx = (int) (charSet.length * Math.random()); // 36 * 생성된 난수를 Int로 추출 (소숫점제거) 
+			System.out.println("idx :::: "+idx); 
+			sb.append(charSet[idx]); 
+			} 
+			return sb.toString(); 
+		}
+
+	@Override
+	public int updateMemberPw(String mId, String prePw, String newPw) {
+		
+		return mDao.updateMemberPw(sqlSession,mId, prePw, newPw);
+	}
 }
 
 

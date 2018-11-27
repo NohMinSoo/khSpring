@@ -2,7 +2,7 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
 	<typeAliases>
-		<typeAlias type="kr.or.ms.member.model.vo.Member" alias="Member"/>
+		<typeAlias type="kr.or.kh.member.model.vo.Member" alias="Member"/>
 	</typeAliases>
 
 </configuration>

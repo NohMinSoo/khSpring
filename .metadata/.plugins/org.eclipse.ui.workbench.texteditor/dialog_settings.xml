@@ -2,35 +2,14 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-<<<<<<< HEAD
-		<item value="" key="selection"/>
-=======
-		<item value="resultCheck" key="selection"/>
->>>>>>> 564e5730b7d36b506a58edff93758e2540b36113
+		<item value="jsp" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-<<<<<<< HEAD
-			<item value="sample4_execDaumPostcode"/>
-			<item value="sample4_jibunAddress"/>
-			<item value="sample4_postcode"/>
-			<item value="sample3_postcode"/>
-			<item value="주소"/>
-			<item value="우편번호 찾기"/>
-=======
-			<item value="resultCheck"/>
-			<item value="mAddress"/>
-			<item value="mAddress-1"/>
->>>>>>> 564e5730b7d36b506a58edff93758e2540b36113
-			<item value="servlet"/>
-			<item value="nickCheck"/>
-			<item value="nickCheck "/>
-			<item value="bs-example-modal-lg"/>
-			<item value=".bs-example-modal-lg]"/>
-			<item value=".bs-example-modal-lg"/>
-			<item value="&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;"/>
+			<item value="jsp"/>
+			<item value="JSTL"/>
 		</list>
 		<list key="replacehistory">
 		</list>

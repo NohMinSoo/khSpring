@@ -40,7 +40,7 @@
 </tx:advice>
 
 <aop:config>
-	<aop:pointcut expression="execution(* kr.or.ms.member.model.service.MemberServiceImpl.*(..))" id="txPointcut"/>
+	<aop:pointcut expression="execution(* kr.or.kh.member.model.service.MemberServiceImpl.*(..))" id="txPointcut"/>
 	<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
 </aop:config>
 

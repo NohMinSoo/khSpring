@@ -1,0 +1,35 @@
+package kr.or.kh.edu.controller;
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+/**
+ * @FileName : EduController.java
+ * @Date :  2018-11-16
+ * @작성자 : 노민수
+ * @변경이력 :  
+ * @프로그램 설명 : "교육과정" 에 대한 기능 요청시 처리되는 컨트롤러 클래스
+ */
+
+@Controller
+public class EduController {
+
+	/**
+	 * @Method Name : curriculumPageCall
+	 * @작성일 : 2018-11-16
+	 * @작성자 : 노민수
+	 * @변경이력 :  
+	 * @Method 설명 : 교육과정을 보여주는 페이지를 호출하는 메소드
+	 * @Parameter :  
+	 * @return : String
+	 * @예외처리 :  
+	 */
+	@RequestMapping(value="/edu/curriculum.kh")
+	public String curriculumPageCall() {
+		
+		return "edu/curriculum";
+	}
+	
+}

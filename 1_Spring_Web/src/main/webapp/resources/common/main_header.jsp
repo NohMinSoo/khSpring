@@ -141,6 +141,16 @@ function realtimeClock()
 		color:black;
 		background-color : skyblue;
 	}
+	#adminMode{
+		text-decoration: none;
+		color: white;
+		background-color : black;
+		text-shadow:0px 1px 1px black; /* 텍스트그림자*/
+	}
+	#adminMode:hover{
+		color:black;
+		background-color : skyblue;
+	}
 </style>
 <body>
 		<div id="header_layer1">
@@ -161,6 +171,7 @@ function realtimeClock()
 			<c:choose>
 				<c:when test="${sessionScope.member !=null}">
 					<B>[<a style="color:blue;"href="/member/myInfo.kh">${sessionScope.member.mNickName}</a>]</B>님 환영합니다  <a id="logout" href="/member/logout.kh">로그아웃</a>
+					<c:if test="${sessionScope.member.mId == 'admin'}"><a id="adminMode" href="/admin/adminPage.kh">관리자 모드</a></c:if>					
 				</c:when>
 			</c:choose>
 			</div>	

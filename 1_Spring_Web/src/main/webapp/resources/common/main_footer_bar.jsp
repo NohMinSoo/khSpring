@@ -79,7 +79,7 @@
 			<li><a href="">개인정보취급방침</a>  </li> <span style="color:white;">|</span>
 			<li><a href="">인재채용문의</a>  </li> <span style="color:white;">|</span>
 			<li><a href="">강사채용</a>  </li> <span style="color:white;">|</span>
-			<li><a href="">훈련비 게시</a></li>
+			<li><a href="http://coconut510.cafe24.com/index.php">Class With</a></li>
 	</ul>
 </div>
 <div id="footer_bar2">

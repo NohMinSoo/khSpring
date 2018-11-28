@@ -10,8 +10,10 @@
 		</layout>
 	</appender>
 	
+	
+	
 	<!-- Application Loggers -->
-	<logger name="kr.or.ms">
+	<logger name="kr.or.kh">
 		<level value="info" />
 	</logger>
 	

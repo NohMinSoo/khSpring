@@ -25,13 +25,19 @@
 		height : 100%;
 	}
 	#mode_list>li>a{
+		display: block;
+		width: 100%;
+		height : 100%;
 		font-size : 25px;
 		color : white;
 		text-decoration: none;
-		line-height: 80px;
+		line-height: 60px;
 	}
 	#middle-content a:hover{
 		color : yellow;
+	}
+	#mode_list li:hover{
+		background-color :blue;
 	}
 	#mode_list{
 		padding : 0;

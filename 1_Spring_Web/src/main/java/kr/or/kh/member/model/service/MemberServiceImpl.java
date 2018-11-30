@@ -1,6 +1,7 @@
 package kr.or.kh.member.model.service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,15 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	SqlSessionTemplate sqlSession;
+	
+	@Override
+	public Member loginMember(HttpServletRequest request,String userId, String userPw) {
+		
+		Member oneMember = mDao.selectOneMember(sqlSession, userId, userPw);
+		
+		return oneMember;
+	}
+	
 	
 	@Override
 	public Member selectOneMember(String userId, String userPw) {

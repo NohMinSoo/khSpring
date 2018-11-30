@@ -5,15 +5,17 @@ CREATE TABLE MEMBER_LOGIN_LOG(
     mll_datetime TimeStamp,                 -- 로그인 일시
     mll_ip  VARCHAR2(20),                   -- 로그인 시도 IP
     mll_reason VARCHAR(500),                -- 로그인 성공/실패 이유
-    mll_userAgent VARCHAR2(100),            -- 로그인한 브라우저의 user agent
-    mll_url     VARCHAR2(255),              -- 로그인한 페이지 주소
-    mll_referer VARCHAR2(255)               -- 이전 페이지 주소 
+    mll_userAgent VARCHAR2(500),            -- 로그인한 브라우저의 user agent
+    mll_url     VARCHAR2(255),              -- 로그인한 페이지 URL
+    mll_referer VARCHAR2(255)               -- 이전 페이지 URL
 );
 
 CREATE SEQUENCE seq_MEMBER_LOGIN_LOG;
 
 insert into MEMBER_LOGIN_LOG VALUES
-(seq_MEMBER_LOGIN_LOG.nextval,'test1','Y',SYSDATE,'127.0.0.1','정상 로그인','test...','http://http://localhost/member/loginPage.kh',
+(seq_MEMBER_LOGIN_LOG.nextval,'test1','Y',SYSDATE,'127.0.0.1','정상 로그인',
+'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36',
+'http://localhost/member/loginPage.kh',
 'http://localhost/index.jsp');
 
 commit;

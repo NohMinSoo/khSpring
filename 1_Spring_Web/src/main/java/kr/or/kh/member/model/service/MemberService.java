@@ -1,11 +1,25 @@
 package kr.or.kh.member.model.service;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 import kr.or.kh.member.model.vo.Member;
 
 public interface MemberService {
 	
+	
+	/**
+	 * @Method Name : loginMember
+	 * @작성일 : 2018-11-16
+	 * @작성자 : 노민수
+	 * @변경이력 :  
+	 * @Method 설명 : 회원 1명의 정보를 가져오는 메소드 (로그인, 회원정보 조회 등등에 사용됨)
+	 * @Parameter :  String userId, String userPw
+	 * @return : Member
+	 * @예외처리 :  (메소드가 수행되는 도중에 발생할 수 있는 예외사항을 기술한다.)
+	 */
+	public Member loginMember(HttpServletRequest request,String userId, String userPw);
 	
 	/**
 	 * @Method Name : selectOneMember

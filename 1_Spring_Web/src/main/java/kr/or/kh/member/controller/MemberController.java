@@ -70,9 +70,8 @@ public class MemberController {
 	public String login(HttpServletRequest request,
 						@RequestParam String userId, @RequestParam String userPw)
 	{
-		System.out.println(userId+"("+request.getRemoteAddr()+") : 로그인 호출" );
 		
-		Member oneMember = mService.selectOneMember(userId, userPw);
+		Member oneMember = mService.loginMember(request,userId, userPw);
 		
 		
 		if(oneMember != null)

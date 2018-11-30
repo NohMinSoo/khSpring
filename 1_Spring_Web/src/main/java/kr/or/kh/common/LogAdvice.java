@@ -1,5 +1,13 @@
 package kr.or.kh.common;
 
+
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -14,26 +22,74 @@ import kr.or.kh.member.model.vo.Member;
 @Aspect
 public class LogAdvice {
 		
+	@Resource(name="logService")
+	LogService logService;	
 	
 	private static final Logger logger = LoggerFactory.getLogger(LogAdvice.class);
 
-	@Pointcut("execution(* kr.or.kh.member.model.service.MemberServiceImpl.selectOneMember(..))")
+	@Pointcut("execution(* kr.or.kh.member.model.service.MemberServiceImpl.loginMember(..))")
 	public void loginLog() {}
 	
 	@Around("loginLog()")
-	public Member startLog(ProceedingJoinPoint pjp) throws Throwable{
+	public Member loginLogWrite(ProceedingJoinPoint pjp) throws Throwable{
 		
 		Object [] arr = pjp.getArgs();
-		System.out.println("파라미터 값1 : " + arr[0].toString());
-		System.out.println("파라미터 값2 : " + arr[1].toString());
+		// arr[0] == request 객체
+		// arr[1] == mId 
+		// arr[2] == mPw
 		
+		HttpServletRequest request = (HttpServletRequest)arr[0];
+		String mId = arr[1].toString();
+		String mPw = arr[2].toString();
+
 		Object returnObj = pjp.proceed();
-		System.out.println("[After] : 로그인 로그");
-		if(returnObj != null) System.out.println("리턴값 : " + returnObj.toString());
-		else System.out.println("리턴값 : "+returnObj);
+		
+		
+		MemberLoginLogObject mll = new MemberLoginLogObject();
+		
+		mll.setmId(mId);
+		if(returnObj!=null)	mll.setMllSuccess("Y");
+		else mll.setMllSuccess("N");
+		mll.setMllIp(request.getRemoteAddr());
+		
+		if(returnObj!=null) mll.setMllReason("로그인 성공");
+		else mll.setMllReason("로그인 실패(아이디 혹은 비밀번호 틀림)");
+		
+		mll.setMllUserAgent(request.getHeader("User-Agent"));
+		mll.setMllUrl(request.getRequestURL().toString());
+		mll.setMllReferer(request.getHeader("referer"));
+		mll.setMllDateTime(this.getTimeStamp());
+		
+		
+		System.out.println(mll);
+		
+		
+		
 		
 		return (Member)returnObj;
 	}
 	
+	public Timestamp getTimeStamp() {
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss.SSS");
+
+		Timestamp timestamp = new Timestamp(Calendar.getInstance().getTimeInMillis());
+		
+		return timestamp;
+		
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
 

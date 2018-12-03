@@ -11,8 +11,13 @@ import kr.or.kh.member.model.dao.MemberDao;
 @Service("logService")
 public class LogService {
 	@Resource(name="logDao")
-	LogDao mDao;
+	LogDao logDao;
 	
 	@Autowired
 	SqlSessionTemplate sqlSession;
+
+	public void loginLogWrite(MemberLoginLogObject mll) {
+		
+		logDao.loginLogWrite(sqlSession,mll);
+	}
 }

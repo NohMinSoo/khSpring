@@ -16,8 +16,8 @@ public class LogService {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 
-	public void loginLogWrite(MemberLoginLogObject mll) {
+	public int loginLogWrite(MemberLoginLogObject mll) {
 		
-		logDao.loginLogWrite(sqlSession,mll);
+		return  logDao.loginLogWrite(sqlSession,mll);
 	}
 }

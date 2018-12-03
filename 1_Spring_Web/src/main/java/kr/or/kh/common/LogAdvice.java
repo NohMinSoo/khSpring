@@ -61,10 +61,13 @@ public class LogAdvice {
 		mll.setMllDateTime(this.getTimeStamp());
 		
 		
-		System.out.println(mll);
-		
-		
-		
+		int result = logService.loginLogWrite(mll);
+		if(result > 0)
+		{
+			System.out.println("로그인 로그 DB에 기록 성공");
+		}else {
+			System.out.println("로그인 로그 DB에 기록 실패");
+		}
 		
 		return (Member)returnObj;
 	}

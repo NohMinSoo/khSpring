@@ -1,0 +1,143 @@
+--테이블 생성
+  CREATE TABLE "SPRING"."CLASS_INFO" 
+   (	"CLASS_NO" NUMBER PRIMARY KEY, 
+	"CLASS_TYPE" VARCHAR2(20 BYTE) NOT NULL, 
+	"CLASS_NAME" VARCHAR2(200 BYTE) NOT NULL, 
+	"CLASS_DETAIL" VARCHAR2(3000 BYTE) NOT NULL, 
+	"TERM" VARCHAR2(20 BYTE) NOT NULL, 
+	"CLASS_MEMBER_NUM" NUMBER NOT NULL, 
+	"NCS_SUB" VARCHAR2(300 BYTE) NOT NULL, 
+	"PAYMENT" CHAR(25 BYTE) DEFAULT ('국비지원 전액무료'), 
+	"CLASS_TIME" VARCHAR2(50 BYTE) NOT NULL, 
+	"JOB_FIELD" VARCHAR2(1000 BYTE) NOT NULL, 
+	"SUPPORT_TARGET" VARCHAR2(250 BYTE) NOT NULL
+   );
+
+
+--시퀀스 생성
+CREATE SEQUENCE CLASS_INFO_SEQ
+START WITH 1
+INCREMENT BY 1
+MAXVALUE 9999
+NOCYCLE
+NOCACHE;
+
+--데이터 입력
+Insert into SPRING.CLASS_INFO (CLASS_NO,CLASS_TYPE,CLASS_NAME,CLASS_DETAIL,TERM,CLASS_MEMBER_NUM,NCS_SUB,PAYMENT,CLASS_TIME,JOB_FIELD,SUPPORT_TARGET) values (CLASS_INFO_SEQ.NEXTVAL,'security','정보보안 기반 해킹기법 분석 양성과정','정보보안 기반 해킹기법 분석 양성 과정은 보안위협 관리통제 및 SW개발 보안구축 등의 이론적인 훈련과 물리적 보안구축과 시스템 보안 구축 등의 실무능력을 갖출 수 있습니다. 실기훈련을 통해 정보자산 보호를 위한 보안 체계를 구축 할 수 있는 능력과 해킹기법 분석 및 대응하기 훈련의 심도 있는 훈련과정을 배움으로써 보안 이론 지식에 그치는 것이 아닌 현장에서도 적용 및 응용 가능할 수 있도록 교육합니다. 보안체계 구축과 더불어 보안위험을 평가하고 관리, 통제할 수 있는 능력을 함양해 정보보안 등의 기술을 습득하실 수 있습니다.','총 840시간',30,'보안엔지니어링(20010206)
+DB엔지니어링(20010204)','국비지원 전액무료','09:30~18:20','정보보안 엔지니어/컨설턴트
+모의해킹/침해대응 전문가
+정보보안 프로그램 개발자
+정보보안 감리 감사/관제
+포렌식 전문가
+화이트해커','고용보험에 가입되어 있지 않은 취업 준비생 또는 실업자
+대학교 최종학년 재학생 중 대학원에 진학하지 않는 학생
+IT 분야로 취업을 원하는 자');
+Insert into SPRING.CLASS_INFO (CLASS_NO,CLASS_TYPE,CLASS_NAME,CLASS_DETAIL,TERM,CLASS_MEMBER_NUM,NCS_SUB,PAYMENT,CLASS_TIME,JOB_FIELD,SUPPORT_TARGET) values (CLASS_INFO_SEQ.NEXTVAL,'security','정보보호 및 네트워크 보안 관리자 양성과정','정보보호 및 네트워크 보안 관리자 양성 과정은 이론적인 훈련과 관리적 보안운영, 네트워크 보안운영, 시스템보안운영, 애플리케이션 보안운영 등의 실무능력을 갖출 수 있는 실기훈련을 통해 정보보호직종의 보안 체계를 구축 할 수 있는 능력을 키울 수 있습니다. 또한, 모의해킹 실습을 통해 해킹공격에 대한 방어기법 훈련을 기반으로 정보보호 훈련의 심도 있는 훈련과정을 배움으로써 이론 지식에 그치는 것이 아닌 현장에서 적용 및 응용 가능할 수 있도록 교육합니다. 네트워크 및 서비스 구성 능력과 더불어 정보에 대한 위험을 평가하고 관리, 통제할 수 있는 능력을 함양해 정보보호 등의 기술을 습득하실 수 있습니다.','총 840시간',23,'정보보호관리/운영(20010601)','국비지원 전액무료','09:30~18:20','정보보안 엔지니어/컨설턴트
+모의해킹/침해대응 전문가
+정보보안 프로그램 개발자
+정보보안 감리 감사/관제
+포렌식 전문가
+화이트해커','고용보험에 가입되어 있지 않은 취업 준비생 또는 실업자
+대학교 최종학년 재학생 중 대학원에 진학하지 않는 학생
+IT 분야로 취업을 원하는 자');
+Insert into SPRING.CLASS_INFO (CLASS_NO,CLASS_TYPE,CLASS_NAME,CLASS_DETAIL,TERM,CLASS_MEMBER_NUM,NCS_SUB,PAYMENT,CLASS_TIME,JOB_FIELD,SUPPORT_TARGET) values (CLASS_INFO_SEQ.NEXTVAL,'security','[NCS]보안엔지니어 및 모의해킹전문가 양성과정','NCS능력단위인 보안위협 관리통제 및 SW개발 보안구축 등의 이론적인 훈련을 실시합니다. 또한, 물리적 보안구축과 시스템 보안 구축 등의 실무능력을 갖출 수 있는 실기훈련을 통해 정보자산 보호를 위한 보안 체계를 구축 할 수 있는 능력을 배양합니다. 비NCS능력단위인 서비스 구성 훈련을 통해 네트워크망 구성 및 서버 구성 실습 등 꼭 필요한 능력을 익힐 수 있으며, 침투테스트 및 보안구성 훈련의 심도 있는 훈련과정을 배움으로써 보안 이론 지식에 그치는 것이 아닌 현장에서도 적용 및 응용 가능할 수 있도록 훈련합니다. 보안체계 구축과 더불어 보안위험을 평가하고 관리, 통제할 수 있는 능력을 함양해 정보보안 엔지니어 및 침투테스트 관리자로서의 취업목표를 습득하실 수 있습니다.','총 840시간',23,'보안엔지니어링(20010206)','국비지원 전액무료','09:30~18:20','정보보안 엔지니어/컨설턴트
+모의해킹/침해대응 전문가
+정보보안 프로그램 개발자
+정보보안 감리 감사/관제
+포렌식 전문가
+화이트해커','고용보험에 가입되어 있지 않은 취업 준비생 또는 실업자
+대학교 최종학년 재학생 중 대학원에 진학하지 않는 학생
+IT 분야로 취업을 원하는 자');
+Insert into SPRING.CLASS_INFO (CLASS_NO,CLASS_TYPE,CLASS_NAME,CLASS_DETAIL,TERM,CLASS_MEMBER_NUM,NCS_SUB,PAYMENT,CLASS_TIME,JOB_FIELD,SUPPORT_TARGET) values (CLASS_INFO_SEQ.NEXTVAL,'security','[NCS]보안엔지니어 및 보안솔루션 엔지니어 양성과정','[NCS] 보안엔지니어 및 모의해킹전문가 양성과정은 해커나 크래커로부터 정보자산과 컴퓨터 시스템 및 네트워크를 보호, 관리하는 보안전문가를 양성하는 과정으로 점차 늘어나는 웹 보안 전문가의 수요와 이를 만족하는 역량 있는 보안전문가 프로그래머 양성을 목표로 체계적인 개발 방법론과 효과적인 현업 환경에 필요한 기술을 교육합니다. 본 과정을 통해 정보보안 전문가가 되기 위해 반드시 필요한 실무능력을 배양하고 웹 기반 보안프로그래밍 등의 기술을 습득하실 수 있습니다.','총 780시간',30,'보안엔지니어링(20010206)
+DB엔지니어링(20010204)','국비지원 전액무료','09:30~18:20','정보보안 엔지니어/컨설턴트
+모의해킹/침해대응 전문가
+정보보안 프로그램 개발자
+정보보안 감리 감사/관제
+포렌식 전문가
+화이트해커','고용보험에 가입되어 있지 않은 취업 준비생 또는 실업자
+대학교 최종학년 재학생 중 대학원에 진학하지 않는 학생
+IT 분야로 취업을 원하는 자');
+Insert into SPRING.CLASS_INFO (CLASS_NO,CLASS_TYPE,CLASS_NAME,CLASS_DETAIL,TERM,CLASS_MEMBER_NUM,NCS_SUB,PAYMENT,CLASS_TIME,JOB_FIELD,SUPPORT_TARGET) values (CLASS_INFO_SEQ.NEXTVAL,'security','[NCS]보안엔지니어 및 침해대응관리자 양성과정','[NCS] 보안엔지니어 및 보안솔루션엔지니어 양성과정은 해커나 크래커로부터 정보자산과 컴퓨터 시스템 및 네트워크를 보호, 관리하는 보안전문가를 양성하는 과정으로 점차 늘어나는 웹 보안 전문가의 수요와 이를 만족하는 역량 있는 보안전문가 프로그래머 양성을 목표로 체계적인 개발 방법론과 효과적인 현업 환경에 필요한 기술을 교육합니다. 본 과정을 통해 정보보안 전문가가 되기 위해 반드시 필요한 실무능력을 배양하고 웹 기반 보안프로그래밍 등의 기술을 습득하실 수 있습니다.','총 780시간',30,'보안엔지니어링(20010206)','국비지원 전액무료','09:30~18:20','정보보안 엔지니어/컨설턴트
+모의해킹/침해대응 전문가
+정보보안 프로그램 개발자
+정보보안 감리 감사/관제
+포렌식 전문가
+화이트해커','고용보험에 가입되어 있지 않은 취업 준비생 또는 실업자
+대학교 최종학년 재학생 중 대학원에 진학하지 않는 학생
+IT 분야로 취업을 원하는 자');
+Insert into SPRING.CLASS_INFO (CLASS_NO,CLASS_TYPE,CLASS_NAME,CLASS_DETAIL,TERM,CLASS_MEMBER_NUM,NCS_SUB,PAYMENT,CLASS_TIME,JOB_FIELD,SUPPORT_TARGET) values (CLASS_INFO_SEQ.NEXTVAL,'security','[NCS]기업이 요구하는 정보보안 엔지니어 양성과정','[NCS]기업이 요구하는 정보보안 엔지니어 양성과정은 해커나 크래커로부터 정보자산과 컴퓨터 시스템 및 네트워크를 보호, 관리하는 보안전문가를 양성하는 과정으로 점차 늘어나는 웹 보안 전문가의 수요와 이를 만족하는 역량 있는 보안전문가 프로그래머 양성을 목표로 체계적인 개발 방법론과 효과적인 현업 환경에 필요한 기술을 교육합니다. 본 과정을 통해 정보보안 전문가가 되기 위해 반드시 필요한 실무능력을 배양하고 웹 기반 보안프로그래밍 등의 기술을 습득하실 수 있습니다.','총 750시간',30,'보안엔지니어링(20010206)','국비지원 전액무료','09:30~18:20','정보보안 엔지니어/컨설턴트
+모의해킹/침해대응 전문가
+정보보안 프로그램 개발자
+정보보안 감리 감사/관제
+포렌식 전문가
+화이트해커','고용보험에 가입되어 있지 않은 취업 준비생 또는 실업자
+대학교 최종학년 재학생 중 대학원에 진학하지 않는 학생
+IT 분야로 취업을 원하는 자');
+Insert into SPRING.CLASS_INFO (CLASS_NO,CLASS_TYPE,CLASS_NAME,CLASS_DETAIL,TERM,CLASS_MEMBER_NUM,NCS_SUB,PAYMENT,CLASS_TIME,JOB_FIELD,SUPPORT_TARGET) values (CLASS_INFO_SEQ.NEXTVAL,'security','[NCS]무선 네트워크기반 정보보안 엔지니어 양성과정','[NCS]무선 네트워크기반 정보보안 엔지니어 양성과정은 해커나 크래커로부터 정보자산과 컴퓨터 시스템 및 네트워크를 보호, 관리하는 보안전문가를 양성하는 과정으로 점차 늘어나는 웹 보안 전문가의 수요와 이를 만족하는 역량 있는 보안전문가 프로그래머 양성을 목표로 체계적인 개발 방법론과 효과적인 현업 환경에 필요한 기술을 교육합니다. 본 과정을 통해 정보보안 전문가가 되기 위해 반드시 필요한 실무능력을 배양하고 웹 기반 보안프로그래밍 등의 기술을 습득하실 수 있습니다.','총 750시간',30,'보안엔지니어링(20010206)','국비지원 전액무료','09:30~18:20','정보보안 엔지니어/컨설턴트
+모의해킹/침해대응 전문가
+정보보안 프로그램 개발자
+정보보안 감리 감사/관제
+포렌식 전문가
+화이트해커','고용보험에 가입되어 있지 않은 취업 준비생 또는 실업자
+대학교 최종학년 재학생 중 대학원에 진학하지 않는 학생
+IT 분야로 취업을 원하는 자');
+Insert into SPRING.CLASS_INFO (CLASS_NO,CLASS_TYPE,CLASS_NAME,CLASS_DETAIL,TERM,CLASS_MEMBER_NUM,NCS_SUB,PAYMENT,CLASS_TIME,JOB_FIELD,SUPPORT_TARGET) values (CLASS_INFO_SEQ.NEXTVAL,'programming','[NCS]웹개발 응용 SW엔지니어 양성과정','[NCS]웹개발 응용SW엔지니어 양성과정을 통해 웹 어플리케이션 제작 능력을 습득하고, 다양화되는 클라이언트 환경에 맞추어 표준화된 품질의 서비스를 제공하는 웹 표준 프로그래밍 능력을 습득할 수 있습니다. 또한 자바 기반의 응용 프로그램 기술과 확장된 각종 프레임워크 사용능력을 습득함으로써 향후 다양하게 발전하게 될 프레임워크 및 환경에 능동적으로 대처할 수 있는 기반을 익히게 될 것입니다.','총 720시간',30,'응용SW엔지니어링(20010202)','국비지원 전액무료','09:30~18:20','JAVA 기반 웹 프로그래밍 개발자
+JAVA웹 컴퍼넌트 개발자
+GUI 응용프로그램 개발자
+EJB 컴포넌트 개발자
+ERP/CRM 기업용 솔루션 개발자
+모바일 어플리케이션 개발자','고용보험에 가입되어 있지 않은 취업 준비생 또는 실업자
+대학교 최종학년 재학생 중 대학원에 진학하지 않는 학생
+IT 분야로 취업을 원하는 자');
+Insert into SPRING.CLASS_INFO (CLASS_NO,CLASS_TYPE,CLASS_NAME,CLASS_DETAIL,TERM,CLASS_MEMBER_NUM,NCS_SUB,PAYMENT,CLASS_TIME,JOB_FIELD,SUPPORT_TARGET) values (CLASS_INFO_SEQ.NEXTVAL,'programming','[NCS]응용SW엔지니어 및 DB엔지니어 양성과정','[NCS]응용SW엔지니어 및 DB엔지니어 양성과정을 통해 웹 어플리케이션 제작 능력을 습득하고, 다양화되는 클라이언트 환경에 맞추어 표준화된 품질의 서비스를 제공하는 웹 표준 프로그래밍 능력을 습득할 수 있습니다. 또한 자바 기반의 응용 프로그램 기술과 확장된 각종 프레임워크 사용 능력을 습득함으로써 향후 다양하게 발전하게 될 프레임워크 및 환경에 능동적으로 대처할 수 있는 기반을 익히게 될 것입니다.','총 720시간',30,'응용SW엔지니어링(20010202)
+DB엔지니어링(20010204)','국비지원 전액무료','09:30~18:20','JAVA 기반 웹 프로그래밍 개발자
+JAVA웹 컴퍼넌트 개발자
+GUI 응용프로그램 개발자
+EJB 컴포넌트 개발자
+ERP/CRM 기업용 솔루션 개발자
+모바일 어플리케이션 개발자','고용보험에 가입되어 있지 않은 취업 준비생 또는 실업자
+대학교 최종학년 재학생 중 대학원에 진학하지 않는 학생
+IT 분야로 취업을 원하는 자');
+Insert into SPRING.CLASS_INFO (CLASS_NO,CLASS_TYPE,CLASS_NAME,CLASS_DETAIL,TERM,CLASS_MEMBER_NUM,NCS_SUB,PAYMENT,CLASS_TIME,JOB_FIELD,SUPPORT_TARGET) values (CLASS_INFO_SEQ.NEXTVAL,'programming','[NCS]응용SW엔지니어 및 하이브리드APP 개발자 양성과정','[NCS]응용SW엔지니어 및 하이브리드APP 개발자 양성과정을 통해 웹 어플리케이션 제작 능력을 습득하고, 다양화되는 클라이언트 환경에 맞추어 표준화된 품질의 서비스를 제공하는 웹 표준 프로그래밍 능력을 습득할 수 있습니다. 또한 자바 기반의 응용 프로그램 기술과 확장된 각종 프레임워크 사용 능력을 습득함으로써 향후 다양하게 발전하게 될 프레임워크 및 환경에 능동적으로 대처할 수 있는 기반을 익히게 될 것입니다.','총 720시간',30,'응용SW엔지니어링(20010202)
+DB엔지니어링(20010204)','국비지원 전액무료','09:30~18:20','JAVA 기반 웹 프로그래밍 개발자
+JAVA웹 컴퍼넌트 개발자
+GUI 응용프로그램 개발자
+EJB 컴포넌트 개발자
+ERP/CRM 기업용 솔루션 개발자
+모바일 어플리케이션 개발자','고용보험에 가입되어 있지 않은 취업 준비생 또는 실업자
+대학교 최종학년 재학생 중 대학원에 진학하지 않는 학생
+IT 분야로 취업을 원하는 자');
+Insert into SPRING.CLASS_INFO (CLASS_NO,CLASS_TYPE,CLASS_NAME,CLASS_DETAIL,TERM,CLASS_MEMBER_NUM,NCS_SUB,PAYMENT,CLASS_TIME,JOB_FIELD,SUPPORT_TARGET) values (CLASS_INFO_SEQ.NEXTVAL,'programming','[NCS]응용SW엔지니어 양성과정','[NCS]응용SW엔지니어 양성과정을 통해 웹 어플리케이션 제작 능력을 습득하고, 다양화되는 클라이언트 환경에 맞추어 표준화된 품질의 서비스를 제공하는 웹 표준 프로그래밍 능력을 습득할 수 있습니다. 또한 자바 기반의 응용 프로그램 기술과 확장된 각종 프레임워크 사용능력을 습득함으로써 향후 다양하게 발전하게 될 프레임워크 및 환경에 능동적으로 대처할 수 있는 기반을 익히게 될 것입니다.','총 720시간',30,'응용SW엔지니어링(20010202)
+DB엔지니어링(20010204)','국비지원 전액무료','09:30~18:20','JAVA 기반 웹 프로그래밍 개발자
+JAVA웹 컴퍼넌트 개발자
+GUI 응용프로그램 개발자
+EJB 컴포넌트 개발자
+ERP/CRM 기업용 솔루션 개발자
+모바일 어플리케이션 개발자','고용보험에 가입되어 있지 않은 취업 준비생 또는 실업자
+대학교 최종학년 재학생 중 대학원에 진학하지 않는 학생
+IT 분야로 취업을 원하는 자');
+Insert into SPRING.CLASS_INFO (CLASS_NO,CLASS_TYPE,CLASS_NAME,CLASS_DETAIL,TERM,CLASS_MEMBER_NUM,NCS_SUB,PAYMENT,CLASS_TIME,JOB_FIELD,SUPPORT_TARGET) values (CLASS_INFO_SEQ.NEXTVAL,'programming','[NCS]응용SW엔지니어 및 안드로이드APP개발자 양성과정','[NCS]응용SW엔지니어 및 안드로이드APP 개발자 양성과정을 통해 웹 어플리케이션 제작 능력을 습득하고, 다양화되는 클라이언트 환경에 맞추어 표준화된 품질의 서비스를 제공하는 웹 표준 프로그래밍 능력을 습득할 수 있습니다. 또한 자바 기반의 응용 프로그램 기술과 확장된 각종 프레임워크 사용 능력을 습득함으로써 향후 다양하게 발전하게 될 프레임워크 및 환경에 능동적으로 대처할 수 있는 기반을 익히게 될 것입니다.','총 1040시간',30,'응용SW엔지니어링(20010202)','국비지원 전액무료','09:30~18:20','JAVA 기반 웹 프로그래밍 개발자
+JAVA웹 컴퍼넌트 개발자
+GUI 응용프로그램 개발자
+EJB 컴포넌트 개발자
+ERP/CRM 기업용 솔루션 개발자
+모바일 어플리케이션 개발자','고용보험에 가입되어 있지 않은 취업 준비생 또는 실업자
+대학교 최종학년 재학생 중 대학원에 진학하지 않는 학생
+IT 분야로 취업을 원하는 자');
+Insert into SPRING.CLASS_INFO (CLASS_NO,CLASS_TYPE,CLASS_NAME,CLASS_DETAIL,TERM,CLASS_MEMBER_NUM,NCS_SUB,PAYMENT,CLASS_TIME,JOB_FIELD,SUPPORT_TARGET) values (CLASS_INFO_SEQ.NEXTVAL,'programming','[NCS]웹-앱 연계형 서비스 구축을 위한 자바 응용SW 개발자 양성과정','[NCS]웹-앱 연계형 서비스 구축을 위한 자바 응용SW 개발자 양성과정을 통해 웹 어플리케이션 제작 능력을 습득하고, 다양화되는 클라이언트 환경에 맞추어 표준화된 품질의 서비스를 제공하는 웹 표준 프로그래밍 능력을 습득할 수 있습니다. 또한 자바 기반의 응용 프로그램 기술과 확장된 각종 프레임워크 사용 능력을 습득함으로써 향후 다양하게 발전하게 될 프레임워크 및 환경에 능동적으로 대처할 수 있는 기반을 익히게 될 것입니다.','총 1040시간',30,'응용SW엔지니어링(20010202)','국비지원 전액무료','09:30~18:20','JAVA 기반 웹 프로그래밍 개발자
+JAVA웹 컴퍼넌트 개발자
+GUI 응용프로그램 개발자
+EJB 컴포넌트 개발자
+ERP/CRM 기업용 솔루션 개발자
+모바일 어플리케이션 개발자','고용보험에 가입되어 있지 않은 취업 준비생 또는 실업자
+대학교 최종학년 재학생 중 대학원에 진학하지 않는 학생
+IT 분야로 취업을 원하는 자');
+Insert into SPRING.CLASS_INFO (CLASS_NO,CLASS_TYPE,CLASS_NAME,CLASS_DETAIL,TERM,CLASS_MEMBER_NUM,NCS_SUB,PAYMENT,CLASS_TIME,JOB_FIELD,SUPPORT_TARGET) values (CLASS_INFO_SEQ.NEXTVAL,'programming','[NCS]사물인터넷(IOT) 융합서비스를 위한 자바 응용SW 개발자 양성과정','[NCS] 사물인터넷(IOT)융합서비스를 위한 자바 응용SW 개발자 양성과정을 통해 웹 어플리케이션 제작 능력을 습득하고, 다양화되는 클라이언트 환경에 맞추어 표준화된 품질의 서비스를 제공하는 웹 표준 프로그래밍 능력을 습득할 수 있습니다. 또한 자바 기반의 응용 프로그램 기술과 확장된 각종 프레임워크 사용 능력을 습득함으로써 향후 다양하게 발전하게 될 프레임워크 및 환경에 능동적으로 대처할 수 있는 기반을 익히게 될 것입니다.','총 1040시간',30,'응용SW엔지니어링(20010202)','국비지원 전액무료','09:30~18:20','JAVA 기반 웹 프로그래밍 개발자
+JAVA웹 컴퍼넌트 개발자
+GUI 응용프로그램 개발자
+EJB 컴포넌트 개발자
+ERP/CRM 기업용 솔루션 개발자
+모바일 어플리케이션 개발자','고용보험에 가입되어 있지 않은 취업 준비생 또는 실업자
+대학교 최종학년 재학생 중 대학원에 진학하지 않는 학생
+IT 분야로 취업을 원하는 자');
+commit;

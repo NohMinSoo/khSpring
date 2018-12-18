@@ -44,13 +44,13 @@ div{box-sizing: border-box;}
 	}
 	.left{
 		position:relative;
-		top : 70px;
-		left : 600px;
+		top : 65px;
+		left : 590px;
 	}
 	.right{
 		position:relative;
-		top : 70px;
-		left : 570px;
+		top : 65px;
+		left : 565px;
 	}
 	#content_2 ul li a {
 		color:white;

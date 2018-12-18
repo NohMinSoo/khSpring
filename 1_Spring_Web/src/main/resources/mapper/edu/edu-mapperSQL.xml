@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu">
+  	<select id="selectClassList" resultType="ClassInfo">
+	  	select 
+	  	class_no as classNo,
+	  	class_type as classType,
+	  	class_name as className,
+	  	class_detail as classDetail,
+	  	term as term,
+	  	class_member_num as classMemberNum,
+	  	ncs_sub as ncsSub,
+	  	payment as payment,
+	  	class_time as classTime,
+	  	job_field as jobField,
+	  	support_target as supportTarget  	
+	  	from class_info order by class_type desc,class_no
+  	</select>
+  	<select id="totalCount" resultType="_int">
+		select count(*) as count from class_info
+	</select>
+	<select id="selectClassInfo" resultType="ClassInfo">
+		select 
+	  	class_no as classNo,
+	  	class_type as classType,
+	  	class_name as className,
+	  	class_detail as classDetail,
+	  	term as term,
+	  	class_member_num as classMemberNum,
+	  	ncs_sub as ncsSub,
+	  	payment as payment,
+	  	class_time as classTime,
+	  	job_field as jobField,
+	  	support_target as supportTarget  	
+	  	from class_info where class_no = #{classNo}
+	</select>
+	<update id="updateClassInfo" parameterType="ClassInfo">
+		update class_info set 
+		CLASS_DETAIL=#{classDetail},
+		TERM = #{term},
+		CLASS_MEMBER_NUM = #{classMemberNum},
+		NCS_SUB = #{ncsSub},
+		CLASS_TIME = #{classTime},
+		JOB_FIELD = #{jobField},
+		support_target = #{supportTarget}
+		where CLASS_NO = #{classNo}
+	</update>
+	<insert id="insertClassInfo" parameterType="ClassInfo">
+		INSERT INTO CLASS_INFO VALUES(
+			CLASS_INFO_SEQ.NEXTVAL,
+			#{classType},
+			#{className},
+			#{classDetail},
+			#{term},
+			#{classMemberNum},
+			#{ncsSub},
+			#{payment},
+			#{classTime},
+			#{jobField},
+			#{supportTarget}			
+		)
+	</insert>
+	<delete id="deleteClassInfo">
+		DELETE FROM CLASS_INFO WHERE CLASS_NO=#{classNo}
+	</delete>
+</mapper>
